@@ -1,0 +1,406 @@
+/* Forest Navbar Styles */
+.forest-navbar {
+    background: linear-gradient(to bottom, #2c5e1f, #1e3f14);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid #4a752c;
+  }
+  
+  /* Logo Styles */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #f8f8e6;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-tree {
+    font-size: 2.5rem;
+    margin-right: 0.8rem;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-tree.swaying {
+    animation: treeSway 1.5s infinite ease-in-out;
+  }
+  
+  .logo-text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-logo:hover .logo-text {
+    color: #ffef96;
+    text-shadow: 0 0 10px #ffef96;
+  }
+  
+  /* Fireflies Animation */
+  .logo-fireflies {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #ffef96;
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: float 3s infinite ease-in-out;
+    opacity: 0;
+  }
+  
+  .navbar-logo:hover .firefly:nth-child(1) {
+    top: 20%;
+    left: 30%;
+    opacity: 0.8;
+    animation-delay: 0s;
+  }
+  
+  .navbar-logo:hover .firefly:nth-child(2) {
+    top: 40%;
+    left: 60%;
+    opacity: 0.8;
+    animation-delay: 1s;
+  }
+  
+  .navbar-logo:hover .firefly:nth-child(3) {
+    top: 10%;
+    left: 80%;
+    opacity: 0.8;
+    animation-delay: 0.5s;
+  }
+  
+  /* Mobile Menu Button */
+  .menu-toggle {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: none;
+    z-index: 1001;
+    transition: all 0.3s ease;
+  }
+  
+  .mushroom {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+  }
+  
+  .mushroom-cap {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 20px;
+    background: #ff6b6b;
+    border-radius: 50% 50% 0 0;
+    transition: all 0.3s ease;
+  }
+  
+  .mushroom-spots {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .spot {
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  
+  .mushroom-stem {
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    width: 6px;
+    height: 15px;
+    background: #f8f8e6;
+    border-radius: 0 0 3px 3px;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-toggle.open .mushroom-cap {
+    transform: rotate(180deg);
+    background: #a8e063;
+  }
+  
+  .menu-toggle.open .mushroom-stem {
+    height: 10px;
+    background: #d1ba7a;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+  }
+  
+  .nav-links li {
+    position: relative;
+  }
+  
+  .nav-links a, .nav-links .logout-btn {
+    color: #f8f8e6;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    background: rgba(106, 153, 78, 0.3);
+    border: none;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+  }
+  
+  .logout-btn {
+    background: rgba(168, 50, 50, 0.3) !important;
+  }
+  
+  .logout-btn:hover {
+    background: rgba(168, 50, 50, 0.5) !important;
+  }
+  
+  .nav-icon {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(168, 224, 99, 0.5);
+    transform: translateY(-3px);
+  }
+  
+  .nav-links a.active .nav-icon {
+    animation: bounce 0.5s ease infinite alternate;
+  }
+  
+  .profile-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background: #ffef96;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #ffef96;
+  }
+  
+  .leaf-trail {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #a8e063;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover .leaf-trail,
+  .nav-links a.active .leaf-trail {
+    width: 100%;
+  }
+  
+  /* Animations */
+  @keyframes treeSway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+  
+  @keyframes float {
+    0% { transform: translate(0, 0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translate(20px, -20px); opacity: 0; }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .nav-links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 100vh;
+      background: linear-gradient(to right, #2d5a27, #1e3f14);
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      padding: 2rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+  
+    .nav-links.open {
+      transform: translateX(0);
+    }
+  
+    .nav-links li {
+      width: 100%;
+    }
+  
+    .nav-links a, .nav-links .logout-btn {
+      padding: 1rem;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      width: 100%;
+    }
+  }
+  
+
+
+  /* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background-color: #2a3a2a;
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal-content {
+  min-width: 350px;
+}
+
+/* Login button styles */
+.login-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Add any additional styles to match your theme */
+
+
+/* Navbar.css - Avatar Styles */
+
+.avatar-container {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.avatar-glow {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  border: 2px solid rgba(76, 156, 117, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* Make sure the avatar aligns with other icons */
+.nav-icon .avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Profile badge indicator */
+.navprofile-avatar {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+ width: 50px;
+    height: 50px;
+     background-color: #f6ae2d;
+  border-radius: 50%;
+  border: 2px solid white;
+}

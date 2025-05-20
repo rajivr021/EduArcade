@@ -1,0 +1,190 @@
+/* ProfilePage.css - Enchanted Forest Theme */
+
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f9f7 0%, #e8f4ea 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.profile-header h1 {
+  font-size: 2.2rem;
+  color: #2a5c45;
+  margin-bottom: 0.5rem;
+}
+
+.profile-header p {
+  color: #4a5568;
+  font-size: 1.1rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(58, 125, 93, 0.15);
+  padding: 2.5rem;
+  display: flex;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #3a7d5d, #4c9c75);
+}
+
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e8f4ea;
+}
+
+.upload-button {
+  background: #3a7d5d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background: #2a5c45;
+}
+
+.profile-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-field {
+  display: flex;
+  gap: 1rem;
+}
+
+.field-label {
+  font-weight: 600;
+  color: #2a5c45;
+  min-width: 80px;
+}
+
+.field-value {
+  color: #4a5568;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #2a5c45;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3a7d5d;
+  box-shadow: 0 0 0 3px rgba(58, 125, 93, 0.2);
+  outline: none;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-button {
+  background: #3a7d5d;
+  color: white;
+  border: none;
+}
+
+.edit-button:hover {
+  background: #2a5c45;
+  transform: translateY(-2px);
+}
+
+.save-button {
+  background: #3a7d5d;
+  color: white;
+  border: none;
+}
+
+.save-button:hover {
+  background: #2a5c45;
+  transform: translateY(-2px);
+}
+
+.cancel-button {
+  background: transparent;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+
+.cancel-button:hover {
+  background: #f5f9f7;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .avatar-section {
+    align-items: center;
+  }
+  
+  .profile-details {
+    gap: 1rem;
+  }
+}
