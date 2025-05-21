@@ -185,7 +185,7 @@
 .cl-input {
   border-radius: 10px !important;
   border: 1px solid #e2e8f0 !important;
-  padding: 0.85rem 1.25rem !important;
+  /* padding: 0.85rem 1.25rem !important; */
   font-size: 0.95rem !important;
   transition: all 0.3s ease !important;
 }
@@ -312,30 +312,35 @@
 .BeeDayimgContainer img {
   width: 100%;
   height: auto;
-  pointer-events: none; /* Prevents mouse interaction */
+  cursor: pointer;
+  /* pointer-events: none; Prevents mouse interaction */
 }
 
 .BeeDayimgContainer:hover img {
-  transform: scale(1.2) rotate(5deg);
+  /* transform: scale(1.2) rotate(5deg); */
   filter: drop-shadow(0 0 10px #e3ffab);
   cursor: pointer;
-  animation: vibrate 0.3s linear infinite;
+  /* animation: vibrate 0.3s linear infinite; */
 }
 
 /* Vibrate animation */
-@keyframes vibrate {
+/* @keyframes vibrate {
   0% { transform: scale(1.2) rotate(5deg) translate(0); }
   20% { transform: scale(1.2) rotate(5deg) translate(-2px, 1px); }
   40% { transform: scale(1.2) rotate(5deg) translate(2px, -1px); }
   60% { transform: scale(1.2) rotate(5deg) translate(-1px, 2px); }
   80% { transform: scale(1.2) rotate(5deg) translate(1px, -2px); }
   100% { transform: scale(1.2) rotate(5deg) translate(0); }
-}
+} */
 
 .forestwelcomeParagraph{
   color: #2e7d32 !important;
 }
 
 .switch-auth{
+  color: black !important;
+}
+
+.cl-internal-iz4t98{
   color: black !important;
 }

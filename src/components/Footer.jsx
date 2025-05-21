@@ -42,7 +42,7 @@ const Footer = () => {
                 >
                     <div className={`avatarcontainer ${isAvatarHovered ? 'hovered' : ''}`}>
                         <div className="avatar-circle">
-                            <div className="avatarimage"><img src='https://lh3.googleusercontent.com/a/ACg8ocKZi5SCMMoojgII76F7idc4CzYjrKq_b-6HibocF0LAO3jhsW3r=s432-c-no'/></div>
+                            <div className="avatarimage"><img src='/footerProfileImg.jpg'/></div>
                             {isAvatarHovered && (
                                 <div className="avatar-hover-content">
                                 </div>
@@ -52,7 +52,7 @@ const Footer = () => {
                     </div>
                     <div className="profile-Info">
                         <h3 className="profile-Name">Rajiv Kumar Developer</h3>
-                        <p className="profile-Title">Senior Full Stack Developer</p>
+                        <p className="profile-Title">Full Stack Developer</p>
                         <p className="profile-Education">MCA Computer Science - Lingaya's Vidyapeeth</p>
                         <p className="profile-Company">Ratna Sagar P Ltd</p>
                     </div>

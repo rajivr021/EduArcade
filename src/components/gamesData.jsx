@@ -21,7 +21,7 @@ const gamesData = [
         id: 4,
         title: "Train MCQ",
         url: "http://10.4.40.172/Templates-2025/Construct_games/Scorm_Final_Activity_Template/Train_MCQ/contents/",
-        banner: "https://via.placeholder.com/300x200?text=Train+MCQ",
+        banner: "https://play-lh.googleusercontent.com/U9klmXBtoQ1T1hXh5L3Yu_DAEpJFneSHop68AXGxmcTqxhkPBOk2W0ODU-n68SlE1-s",
     },
     {
         id: 5,
@@ -33,7 +33,7 @@ const gamesData = [
         id: 6,
         title: "Train Typing",
         url: "http://10.4.40.172/Templates-2025/Construct_games/Scorm_Final_Activity_Template/Train_Typing/contents/",
-        banner: "https://via.placeholder.com/300x200?text=Train+Typing",
+        banner: "https://image.winudf.com/v2/image/Y29tLnRpbnlsYWJwcm9kdWN0aW9ucy50cmFpbnNfaWNvbl8xNTM1OTk0MTAxXzAyNg/icon.png?fakeurl=1&h=240&type=webp",
     },
     {
         id: 7,
@@ -63,7 +63,7 @@ const gamesData = [
         id: 11,
         title: "WordConnect",
         url: "http://10.4.40.172/Templates-2025/Construct_games/Scorm_Final_Activity_Template/WordConnect/contents/",
-        banner: "https://via.placeholder.com/300x200?text=WordConnect",
+        banner: "https://mir-s3-cdn-cf.behance.net/projects/404/00773e95928985.613e3b9fe8ca2.jpg",
     },
     {
         id: 12,
@@ -99,7 +99,7 @@ const gamesData = [
         id: 17,
         title: "MCQ-JumpingGame ",
         url: "http://10.4.40.172/Templates-2025/MCQ-JumpingGame/contents/",
-        banner: "https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-children-go-to-school-study-fresh-blue-banner-image_150968.jpg",
+        banner: "https://triviacrack.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FbackgroundBanner.3ffd0ab6.webp&w=3840&q=75",
     },
     {
         id: 18,
@@ -117,25 +117,25 @@ const gamesData = [
         id: 20,
         title: "SelectWords ",
         url: "http://10.4.40.172/Templates-2025/SelectWords/contents/",
-        banner: "https://via.placeholder.com/300x200?text=Select+Words",
+        banner: "https://img.gamemonetize.com/uc3t7rb989gp07i25otuohgk6hjifrrl/512x384.jpg",
     },
     {
         id: 21,
         title: "SpotTheDifference ",
         url: "http://10.4.40.172/Templates-2025/Spotthedifference/contents/",
-        banner: "https://via.placeholder.com/300x200?text=Spot+The+Difference",
+        banner: "https://www.shutterstock.com/image-vector/find-9-differences-game-children-600nw-2462072099.jpg",
     },
     {
         id: 22,
         title: "Typing ",
         url: "http://10.4.40.172/Templates-2025/Typing-Flashcard/contents/",
-        banner: "https://via.placeholder.com/300x200?text=Typing+Game",
+        banner: "https://scontent.fdel11-4.fna.fbcdn.net/v/t39.30808-1/301630591_757962555498632_3504002148598414005_n.jpg?cstp=mx1024x1024&ctp=s720x720&_nc_cat=102&ccb=1-7&_nc_sid=3ab345&_nc_ohc=jlPV5Orc0ycQ7kNvwF__ctz&_nc_oc=AdmQA0zjXP5_DP82zBIqjXyY2tiUDmu9Ck0YlSpVWBQ08TSOX1EZMWy3bBbjBq2KWRMSeaGd9q_v3DfFbJ6gLmDC&_nc_zt=24&_nc_ht=scontent.fdel11-4.fna&_nc_gid=qpbvG4J0lFkzih30TnOQnQ&oh=00_AfJys7j3rwhAC6e7rd5cGTa_0R2eVHdxW1zWxEZkM5NtNw&oe=6834040F",
     },
     {
         id: 23,
         title: "WordSearch ",
         url: "http://10.4.40.172/Templates-2025/WordSearch/contents/",
-        banner: "https://via.placeholder.com/300x200?text=Word+Search",
+        banner: "https://m.media-amazon.com/images/I/A1Wl7nryBXL._SL500_.jpg",
     },
     {
         id: 24,
@@ -219,7 +219,7 @@ const gamesData = [
         id: 37,
         title: "TG ",
         url: "http://10.4.40.172/Templates-2025/TG/",
-        banner: "https://funlearningforkids.com/wp-content/uploads/2016/02/I-Have-Who-Has-Card-Game-Blank-Sight-Words-Alphabet-FB.png",
+        banner: "https://img.freepik.com/premium-photo/cartoon-illustration-children-playing-slide-with-word-kids_1217673-181453.jpg",
     },
     {
         id: 38,
@@ -237,13 +237,25 @@ const gamesData = [
         id: 40,
         title: "MCQ-LongOptionType ",
         url: "http://10.4.40.172/Templates-2025/MCQ-LongOptionType/contents/",
-        banner: "https://static.vecteezy.com/system/resources/thumbnails/010/876/471/small/quiz-questions-and-test-menu-choice-neon-template-vector.jpg",
+        banner: "https://i.ytimg.com/vi/fLtS5Ni7Dt8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDqMPjwXNfn9wFyuguqSWp8mHy6Mw",
     },
     {
         id: 41,
         title: "Hots - Type ",
         url: "http://10.4.40.172/Templates-2025/HOTS-Typing/contents/",
         banner: "https://m.media-amazon.com/images/I/71QzeycflWL.jpg",
+    },
+    {
+        id: 42,
+        title: "Magic - Gallery",
+        url: "https://kids-magic-gallery.netlify.app/",
+        banner: "https://img.freepik.com/premium-vector/paper-template-with-school-kids-nature-background_43633-8914.jpg",
+    },
+    {
+        id: 43,
+        title: "FunToDo",
+        url: "https://fun-to-do.netlify.app/",
+        banner: "https://thumbs.dreamstime.com/b/to-do-list-funny-design-kids-vector-illustration-to-do-list-funny-design-kids-vector-graphic-illustration-153105124.jpg",
     },
 ];
 

@@ -9,7 +9,6 @@ const Game = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
   const [currentPage, setCurrentPage] = useState(1);
-  const [favorites, setFavorites] = useState([]);
   const searchInputRef = useRef(null);
 
   // Filter and sort games
@@ -20,33 +19,25 @@ const Game = () => {
       : b.title.localeCompare(a.title)
     );
 
-  // Pagination logic
+  // Pagination
   const totalPages = Math.ceil(filteredGames.length / ITEMS_PER_PAGE);
   const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
   const visibleGames = filteredGames.slice(startIdx, startIdx + ITEMS_PER_PAGE);
 
-  // Focus search input on mount
+  // Focus search on mount
   useEffect(() => {
     searchInputRef.current.focus();
   }, []);
 
-  // Reset to page 1 when search or sort changes
+  // Reset page when search/sort changes
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, sortOrder]);
 
-  const toggleFavorite = (gameId) => {
-    setFavorites(prev =>
-      prev.includes(gameId)
-        ? prev.filter(id => id !== gameId)
-        : [...prev, gameId]
-    );
-  };
-
   return (
     <div className="kids-game-browser">
       <header className="browser-header">
-        <h1>🎮 Fun Game World 🎮</h1>
+        <h1><img className='GameImg' src='/game.png' alt="" /> Fun Game World <img className='GameImg' src='/game.png' alt="" /> </h1>
 
         <div className="search-container">
           <div className="search-box">
@@ -58,7 +49,7 @@ const Game = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
             />
-            <span className="search-icon">🔍</span>
+            <span className="search-icon"><img className='GameImg' src='/Search.gif' alt="" /> </span>
           </div>
 
           <div className="sort-toggle">
@@ -81,14 +72,11 @@ const Game = () => {
       <div className="game-grid">
         {visibleGames.length > 0 ? (
           visibleGames.map((game) => (
-            <div key={game.id} className="game-card">
-              <div className="card-inner">
-                <Link
-                  to={game.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="game-link"
-                >
+            <Link to={game.url} target="_blank"
+              rel="noopener noreferrer"
+              className="game-link"> <div key={game.id} className="game-card">
+                <div className="card-inner">
+
                   <div className="game-image-container">
                     <img
                       src={game.banner}
@@ -99,23 +87,13 @@ const Game = () => {
                     <div className="game-overlay"></div>
                   </div>
                   <div className="game-info">
+                    <img className='playbtngif' src='/start.png' alt="" />
                     <h3>{game.title}</h3>
-                    <span className="play-button">Play Now →</span>
                   </div>
-                </Link>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleFavorite(game.id);
-                  }}
-                  className={`favorite-btn ${favorites.includes(game.id) ? 'favorited' : ''}`}
-                  aria-label={favorites.includes(game.id) ? 'Remove from favorites' : 'Add to favorites'}
-                >
-                  {favorites.includes(game.id) ? '❤️' : '🤍'}
-                </button>
-                {favorites.includes(game.id) && <div className="favorite-badge">⭐ Favorite</div>}
-              </div>
-            </div>
+
+
+                </div>
+              </div></Link>
           ))
         ) : (
           <div className="no-results">
@@ -156,27 +134,6 @@ const Game = () => {
           >
             Next ▶
           </button>
-        </div>
-      )}
-
-      {favorites.length > 0 && (
-        <div className="favorites-section">
-          <h2>⭐ Your Favorites ⭐</h2>
-          <div className="favorites-grid">
-            {gamesData
-              .filter(game => favorites.includes(game.id))
-              .map(game => (
-                <div key={game.id} className="favorite-card">
-                  <div className="favorite-card-inner">
-                    <Link to={game.url} target="_blank" rel="noopener noreferrer">
-                      <img src={game.banner} alt={game.title} />
-                      <span>{game.title}</span>
-                      <div className="favorite-overlay"></div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-          </div>
         </div>
       )}
     </div>

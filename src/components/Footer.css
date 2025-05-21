@@ -6,6 +6,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   overflow: hidden;
+  margin-bottom: 1rem;
+    border-radius: 20px 0px 20px 0px;
 }
 
 .modern-footer::before {
@@ -382,4 +384,6 @@
 .avatarcontainer{
   width: 100px;
     height: 100px;
+    top: -14px;
+    position: relative;
 }

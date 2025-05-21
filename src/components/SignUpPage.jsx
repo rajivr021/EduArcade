@@ -6,10 +6,7 @@ import Tree from '/Tree.gif'
 const SignUpPage = () => {
   return (
     <div className="sign-up-container">
-      {/* Decorative elements */}
-      {/* <div className="unicorn-decoration">🦄</div>
-      <div className="leaf-decoration leaf-1"></div>
-      <div className="leaf-decoration leaf-2"></div> */}
+     
 
       <div className="forest-welcome">
         <h2>🌿 Join the EduArcade! 🌿</h2>
