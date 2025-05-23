@@ -19,19 +19,19 @@ const AboutUs = () => {
           <div className="hero-stats">
             <div className="stat-item">
               <div className="stat-number">150+</div>
-              <div className="stat-label">Games Developed</div>
+              <div className="statlabel">Games Developed</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">5M+</div>
-              <div className="stat-label">Active Users</div>
+              <div className="statlabel">Active Users</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">50+</div>
-              <div className="stat-label">Team Members</div>
+              <div className="statlabel">Team Members</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">12</div>
-              <div className="stat-label">Countries Served</div>
+              <div className="statlabel">Countries Served</div>
             </div>
           </div>
         </div>

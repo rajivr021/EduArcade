@@ -18,9 +18,9 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { path: "/", icon: "🏠", name: "Home" },
-    { path: "/games", icon: "🎮", name: "Games" },
-    { path: "/leaderboard", icon: "🏆", name: "Leaderboard" },
+    { path: "/", icon: <img className='nav-img' src='./home.gif'/>, name: "" ,id:1321},
+    { path: "/games", icon: <img className='nav-img' src='./LB/Games.gif'/>, name: "" ,id:1121},
+    { path: "/leaderboard", icon: <img className='nav-img' src='./LB/lbNav.gif'/>, name: "" ,id:1311},
     ...(isSignedIn
       ? [{
           path: "/Profile",
@@ -91,8 +91,8 @@ const Navbar = () => {
       <ul className={`nav-links ${isOpen ? "open" : ""}`}>
         {navItems.map((item) => (
           <li
-            key={item.name}
-            onMouseEnter={() => handleHover(item.name)}
+            key={item.id}
+            onMouseEnter={() => handleHover(item.id)}
             onMouseLeave={handleLeave}
           >
             <Link
@@ -102,19 +102,20 @@ const Navbar = () => {
             >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-text">{item.name}</span>
-              {item.isProfile && <div className="profile-badge" />}
+              {item.isProfile && <div className="profile-badge HoverNone" />}
               <div className="leaf-trail" />
             </Link>
           </li>
         ))}
 
         {isSignedIn && (
-          <li>
-            <button onClick={handleLogout} className="logout-btn">
-              <span className="nav-icon">🚪</span>
-              <span className="nav-text">Log Out</span>
-            </button>
-          </li>
+         <li>
+  <button onClick={handleLogout} className="logout-btn">
+    <span className="nav-icon">🚪</span>
+    <span className="nav-text">Log Out</span>
+    <div className="leaf-trail" />
+  </button>
+</li>
         )}
       </ul>
     </nav>

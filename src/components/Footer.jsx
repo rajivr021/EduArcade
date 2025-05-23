@@ -92,19 +92,19 @@ const Footer = () => {
                     {expandedSection === 'professional' && (
                         <div className="section-content">
                             <div className="details-grid">
-                                <div className="detail-item">
+                                <div className="detailitem">
                                     <h5>Current Position</h5>
                                     <p>Developer at Ratna Sagar P Ltd</p>
                                 </div>
-                                <div className="detail-item">
+                                <div className="detailitem">
                                     <h5>Specialization</h5>
                                     <p>JavaScript, ReactJS, Node.js</p>
                                 </div>
-                                <div className="detail-item">
+                                <div className="detailitem">
                                     <h5>Experience</h5>
                                     <p>3+ years in web development</p>
                                 </div>
-                                <div className="detail-item">
+                                <div className="detailitem">
                                     <h5>Certifications</h5>
                                     <p>Data Structures and Algorithms</p>
                                 </div>

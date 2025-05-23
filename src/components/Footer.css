@@ -237,19 +237,19 @@
   gap: 1.5rem;
 }
 
-.detail-item {
+.detailitem {
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.733);
   border-radius: 6px;
 }
 
-.detail-item h5 {
+.detailitem h5 {
   margin: 0 0 0.5rem 0;
   color: #81c784;
   font-size: 0.9rem;
 }
 
-.detail-item p {
+.detailitem p {
   margin: 0;
   color: rgba(0, 0, 0, 0.8);
   font-size: 0.95rem;

@@ -168,13 +168,14 @@
     color: #f8f8e6;
     text-decoration: none;
     font-size: 1.1rem;
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
     display: flex;
     align-items: center;
     position: relative;
+    right:2px;
     transition: all 0.3s ease;
     border-radius: 20px;
-    background: rgba(106, 153, 78, 0.3);
+    /* background: rgba(106, 153, 78, 0.3); */
     border: none;
     cursor: pointer;
     font-family: 'Comic Neue', cursive;
@@ -198,6 +199,10 @@
   .nav-links a.active {
     background: rgba(168, 224, 99, 0.5);
     transform: translateY(-3px);
+  }
+  .HoverNone:hover{
+     background:none;
+    transform: none;
   }
   
   .nav-links a.active .nav-icon {
@@ -404,3 +409,11 @@
   border-radius: 50%;
   border: 2px solid white;
 }
+
+.nav-img {
+  width: 40px;
+  height: 40px;
+}
+
+
+

@@ -10,7 +10,7 @@
 }
 
 .profile-container {
-  max-width: 1000px;
+  max-width: 98%;
   margin: 0 auto;
   padding: 20px;
   font-family: 'Comic Sans MS', 'Marker Felt', 'Arial Rounded MT Bold', sans-serif;
@@ -472,12 +472,12 @@
 .stat-value {
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--theme-dark);
+  color: black;
   margin: 10px 0;
 }
 
 .stat-label {
-  color: var(--dark-gray);
+  color: white;
   font-size: 1rem;
 }
 
@@ -508,8 +508,8 @@
 
 .chart-label {
   margin-top: 10px;
-  font-weight: bold;
-  color: var(--dark-gray);
+  /* font-weight: bold; */
+  color: white;
 }
 
 .chart-percent {

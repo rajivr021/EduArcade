@@ -11,6 +11,20 @@ const Game = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const searchInputRef = useRef(null);
 
+  // Function to record a game play
+  const recordGamePlay = (gameId) => {
+    const playData = {
+      gameId,
+      timestamp: new Date().toISOString()
+    };
+    
+    // Get existing plays from localStorage or initialize empty array
+    const existingPlays = JSON.parse(localStorage.getItem('gamePlays')) || [];
+    
+    // Add new play and save back to localStorage
+    localStorage.setItem('gamePlays', JSON.stringify([...existingPlays, playData]));
+  };
+
   // Filter and sort games
   const filteredGames = gamesData
     .filter(game => game.title.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -72,11 +86,16 @@ const Game = () => {
       <div className="game-grid">
         {visibleGames.length > 0 ? (
           visibleGames.map((game) => (
-            <Link to={game.url} target="_blank"
-              rel="noopener noreferrer"
-              className="game-link"> <div key={game.id} className="game-card">
+            <Link 
+              to={game.url} 
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="game-link"
+              onClick={() => recordGamePlay(game.id)} // Record play when clicked
+              key={game.id} // Moved key here for better React practice
+            >
+              <div className="game-card">
                 <div className="card-inner">
-
                   <div className="game-image-container">
                     <img
                       src={game.banner}
@@ -90,10 +109,9 @@ const Game = () => {
                     <img className='playbtngif' src='/start.png' alt="" />
                     <h3>{game.title}</h3>
                   </div>
-
-
                 </div>
-              </div></Link>
+              </div>
+            </Link>
           ))
         ) : (
           <div className="no-results">
