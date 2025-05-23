@@ -50,6 +50,11 @@ const appRouter = createBrowserRouter([
   path: '/sign-up/verify',
   element: <SignUpPage />,
 },
+{
+  path: '/sign-up/sso-callback',
+  element: <SignUpPage />,
+},
+
 
 ]);
 

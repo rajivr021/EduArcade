@@ -213,7 +213,7 @@ const gamesData = [
         id: 36,
         title: "Colouring ",
         url: "http://10.4.40.172/Templates-2025/Coloring/contents/",
-        banner: "https://play-lh.googleusercontent.com/Qv3LMRDdqAIXsgNDFQVT2h9FcuxTWCyzr_H5K9K0j8Tx1h88ea2YZGKAvMzRff2GbY8=w526-h296-rw",
+        banner: "https://play-lh.googleusercontent.com/IsMxW_7EWIkNSuQ4f3tQXLsmXhK_gHebDz1sj5e7Mx1jWBlA3nehu-p3p4GgbvdIkmJY",
     },
     {
         id: 37,

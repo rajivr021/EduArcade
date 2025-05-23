@@ -14,10 +14,12 @@ const Profile = () => {
     class: '',
     avatar: '',
     favoriteSubject: '',
-    superheroName: ''
+    superheroName: '',
+    favoriteColor: '#4CAF50' // Default to green
   });
   const [showConfetti, setShowConfetti] = useState(false);
   const [activeTab, setActiveTab] = useState('profile');
+  const [showSuperheroModal, setShowSuperheroModal] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -36,7 +38,8 @@ const Profile = () => {
       class: user.unsafeMetadata?.class || '',
       avatar: user.imageUrl || googleAccount?.profileImageUrl || '',
       favoriteSubject: user.unsafeMetadata?.favoriteSubject || '',
-      superheroName: user.unsafeMetadata?.superheroName || ''
+      superheroName: user.unsafeMetadata?.superheroName || '',
+      favoriteColor: user.unsafeMetadata?.favoriteColor || '#4CAF50'
     });
   }, [user]);
 
@@ -57,7 +60,8 @@ const Profile = () => {
           age: profile.age,
           class: profile.class,
           favoriteSubject: profile.favoriteSubject,
-          superheroName: profile.superheroName
+          superheroName: profile.superheroName,
+          favoriteColor: profile.favoriteColor
         },
       });
 
@@ -82,23 +86,37 @@ const Profile = () => {
     }
   };
 
-  const classColors = {
-    Explorer: '#4CAF50',
-    Guardian: '#2196F3',
-    Scholar: '#9C27B0',
-    Artisan: '#FF9800'
+  const generateSuperheroName = () => {
+    const adjectives = ['Amazing', 'Brilliant', 'Courageous', 'Dynamic', 'Energetic', 'Fantastic', 'Glorious'];
+    const nouns = ['Explorer', 'Genius', 'Hero', 'Inventor', 'Mastermind', 'Ninja', 'Wizard'];
+    const randomAdj = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+    return `${randomAdj} ${randomNoun}`;
   };
 
-  const getClassBadge = (classType) => {
-    if (!classType) return null;
-    return (
-      <span
-        className="class-badge"
-        style={{ backgroundColor: classColors[classType] || '#607D8B' }}
-      >
-        {classType}
-      </span>
-    );
+  const classOptions = [
+    { value: 'Grade 5 Trailblazer', label: '🌄 Grade 5 Trailblazer (Pioneering new knowledge paths)' },
+    { value: 'Grade 5 Discoverer', label: '🔍 Grade 5 Discoverer (Uncovering hidden wonders)' },
+    { value: 'Grade 6 Navigator', label: '🧭 Grade 6 Navigator (Charting your learning journey)' },
+    { value: 'Grade 6 Inventor', label: '⚙️ Grade 6 Inventor (Building creative solutions)' },
+    { value: 'Grade 7 Pathfinder', label: '🗺️ Grade 7 Pathfinder (Mapping complex concepts)' },
+    { value: 'Grade 7 Alchemist', label: '🧪 Grade 7 Alchemist (Mixing knowledge like magic)' },
+    { value: 'Grade 8 Architect', label: '🏛️ Grade 8 Architect (Designing understanding)' },
+    { value: 'Grade 8 Codebreaker', label: '🔐 Grade 8 Codebreaker (Solving learning puzzles)' },
+    { value: 'Grade 9 Visionary', label: '🔮 Grade 9 Visionary (Seeing future possibilities)' },
+    { value: 'Grade 9 Strategist', label: '♟️ Grade 9 Strategist (Mastering learning plans)' },
+    { value: 'Grade 10 Luminary', label: '💡 Grade 10 Luminary (Lighting the way forward)' },
+    { value: 'Grade 10 Sage', label: '🧠 Grade 10 Sage (Wisdom in many subjects)' }
+  ];
+
+  const getClassColor = (classType) => {
+    if (!classType) return '#607D8B';
+    const gradeMatch = classType.match(/Grade (\d+)/);
+    if (!gradeMatch) return '#4CAF50';
+    
+    const grade = parseInt(gradeMatch[1]);
+    const hue = (grade * 30) % 360; // Generate different hues based on grade
+    return `hsl(${hue}, 70%, 50%)`;
   };
 
   if (!user) {
@@ -107,10 +125,10 @@ const Profile = () => {
   }
 
   return (
-    <div className="profile-container">
+    <div className="profile-container" style={{ '--theme-color': profile.favoriteColor }}>
       {showConfetti && (
         <div className="confetti-container">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(100)].map((_, i) => (
             <div key={i} className="confetti" style={{
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 2}s`,
@@ -120,9 +138,49 @@ const Profile = () => {
         </div>
       )}
 
+      {showSuperheroModal && (
+        <div className="modal-overlay">
+          <div className="superhero-modal">
+            <h3>🦸 Create Your Superhero Identity!</h3>
+            <p>Every great learner needs a superhero name!</p>
+            <div className="superhero-options">
+              <input
+                type="text"
+                value={profile.superheroName}
+                onChange={(e) => setProfile({...profile, superheroName: e.target.value})}
+                placeholder="Enter your superhero name"
+              />
+              <button 
+                className="generate-button"
+                onClick={() => setProfile({...profile, superheroName: generateSuperheroName()})}
+              >
+                🎲 Generate Random Name
+              </button>
+            </div>
+            <div className="modal-actions">
+              <button 
+                className="save-button"
+                onClick={() => {
+                  setShowSuperheroModal(false);
+                  if (!profile.superheroName) {
+                    setProfile({...profile, superheroName: generateSuperheroName()});
+                  }
+                }}
+              >
+                Save Superhero Name
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="profile-header">
-        <h1>🌟 My Profile</h1>
-        <p>Customize your learning journey!</p>
+        <h1>
+          <span className="header-icon">🌟</span> 
+          My Adventure Profile
+          <span className="header-icon">🌟</span>
+        </h1>
+        <p>Customize your learning journey and show off your achievements!</p>
       </div>
 
       <div className="profile-tabs">
@@ -130,19 +188,19 @@ const Profile = () => {
           className={`tab-button ${activeTab === 'profile' ? 'active' : ''}`}
           onClick={() => setActiveTab('profile')}
         >
-          🏰 My Profile
+          <span className="tab-icon">📝</span> My Profile
         </button>
         <button
           className={`tab-button ${activeTab === 'badges' ? 'active' : ''}`}
           onClick={() => setActiveTab('badges')}
         >
-          🏆 My Badges
+          <span className="tab-icon">🏆</span> My Badges
         </button>
         <button
           className={`tab-button ${activeTab === 'progress' ? 'active' : ''}`}
           onClick={() => setActiveTab('progress')}
         >
-          📈 My Progress
+          <span className="tab-icon">📊</span> My Progress
         </button>
       </div>
 
@@ -164,13 +222,19 @@ const Profile = () => {
                     onChange={handleAvatarChange}
                     style={{ display: 'none' }}
                   />
-                  <label htmlFor="avatar-upload" className="upload-button"></label>
+                  <label htmlFor="avatar-upload" className="upload-button">
+                    <span className="upload-icon">📷</span> Change
+                  </label>
                 </div>
               )}
             </div>
-            {!isEditing && profile.superheroName && (
-              <div className="superhero-name">
+            {profile.superheroName && (
+              <div 
+                className={`superhero-name ${isEditing ? 'editable' : ''}`}
+                onClick={isEditing ? () => setShowSuperheroModal(true) : null}
+              >
                 🦸 Superhero Name: {profile.superheroName}
+                {isEditing && <span className="edit-pencil">✏️</span>}
               </div>
             )}
           </div>
@@ -179,7 +243,7 @@ const Profile = () => {
             {isEditing ? (
               <>
                 <div className="form-group">
-                  <label>👑 First Name</label>
+                  <label><span className="input-icon">👑</span> First Name</label>
                   <input
                     type="text"
                     name="firstName"
@@ -189,7 +253,7 @@ const Profile = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>👑 Last Name</label>
+                  <label><span className="input-icon">👑</span> Last Name</label>
                   <input
                     type="text"
                     name="lastName"
@@ -199,45 +263,35 @@ const Profile = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>🎂 Age</label>
+                  <label><span className="input-icon">🎂</span> Age</label>
                   <input
                     type="number"
                     name="age"
                     value={profile.age}
                     onChange={handleInputChange}
                     min="5"
-                    max="100"
+                    max="18"
                     placeholder="How old are you?"
                   />
                 </div>
                 <div className="form-group">
-                  <label>🏅 Class</label>
+                  <label><span className="input-icon">🏫</span> Class</label>
                   <select
                     name="class"
                     value={profile.class}
                     onChange={handleInputChange}
+                    style={{ borderColor: getClassColor(profile.class) }}
                   >
                     <option value="">Choose your class</option>
-                    <option value="Grade 5 Trailblazer">🌄 Grade 5 Trailblazer (Pioneering new knowledge paths)</option>
-                    <option value="Grade 5 Discoverer">🔍 Grade 5 Discoverer (Uncovering hidden wonders)</option>
-
-                    <option value="Grade 6 Navigator">🧭 Grade 6 Navigator (Charting your learning journey)</option>
-                    <option value="Grade 6 Inventor">⚙️ Grade 6 Inventor (Building creative solutions)</option>
-
-                    <option value="Grade 7 Pathfinder">🗺️ Grade 7 Pathfinder (Mapping complex concepts)</option>
-                    <option value="Grade 7 Alchemist">🧪 Grade 7 Alchemist (Mixing knowledge like magic)</option>
-
-                    <option value="Grade 8 Architect">🏛️ Grade 8 Architect (Designing understanding)</option>
-                    <option value="Grade 8 Codebreaker">🔐 Grade 8 Codebreaker (Solving learning puzzles)</option>
-
-                    <option value="Grade 9 Visionary">🔮 Grade 9 Visionary (Seeing future possibilities)</option>
-                    <option value="Grade 9 Strategist">♟️ Grade 9 Strategist (Mastering learning plans)</option>
-
-                    <option value="Grade 10 Luminary">💡 Grade 10 Luminary (Lighting the way forward)</option>
-                    <option value="Grade 10 Sage">🧠 Grade 10 Sage (Wisdom in many subjects)</option>  </select>
+                    {classOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="form-group">
-                  <label>❤️ Favorite Subject</label>
+                  <label><span className="input-icon">❤️</span> Favorite Subject</label>
                   <input
                     type="text"
                     name="favoriteSubject"
@@ -247,49 +301,55 @@ const Profile = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>🦸 Superhero Name</label>
+                  <label><span className="input-icon">🎨</span> Favorite Color</label>
                   <input
-                    type="text"
-                    name="superheroName"
-                    value={profile.superheroName}
+                    type="color"
+                    name="favoriteColor"
+                    value={profile.favoriteColor}
                     onChange={handleInputChange}
-                    placeholder="Your secret superhero identity"
                   />
                 </div>
               </>
             ) : (
               <>
                 <div className="profile-field">
-                  <span className="field-label">👋 Name:</span>
+                  <span className="field-icon">👋</span>
+                  <span className="field-label">Name:</span>
                   <span className="field-value">
                     {profile.firstName} {profile.lastName}
                   </span>
                 </div>
                 <div className="profile-field">
-                  <span className="field-label">🎂 Age:</span>
+                  <span className="field-icon">🎂</span>
+                  <span className="field-label">Age:</span>
                   <span className="field-value">
                     {profile.age || 'Secret!'}
                   </span>
                 </div>
                 <div className="profile-field">
-                  <span className="field-label">🏅 Class:</span>
-                  <span className="field-value">
-                    {profile.class ? (
-                      <>
-                        {getClassBadge(profile.class)}
-                        {profile.class === 'Explorer' && ' 🌍'}
-                        {profile.class === 'Guardian' && ' 🛡️'}
-                        {profile.class === 'Scholar' && ' 📚'}
-                        {profile.class === 'Artisan' && ' 🎨'}
-                      </>
-                    ) : 'Not chosen yet'}
+                  <span className="field-icon">🏫</span>
+                  <span className="field-label">Class:</span>
+                  <span 
+                    className="field-value class-badge"
+                    style={{ backgroundColor: getClassColor(profile.class) }}
+                  >
+                    {profile.class || 'Not chosen yet'}
                   </span>
                 </div>
                 <div className="profile-field">
-                  <span className="field-label">❤️ Favorite Subject:</span>
+                  <span className="field-icon">❤️</span>
+                  <span className="field-label">Favorite Subject:</span>
                   <span className="field-value">
                     {profile.favoriteSubject || 'Everything!'}
                   </span>
+                </div>
+                <div className="profile-field">
+                  <span className="field-icon">🎨</span>
+                  <span className="field-label">Favorite Color:</span>
+                  <span 
+                    className="field-value color-preview"
+                    style={{ backgroundColor: profile.favoriteColor }}
+                  ></span>
                 </div>
               </>
             )}
@@ -298,13 +358,13 @@ const Profile = () => {
               {isEditing ? (
                 <>
                   <button onClick={handleSave} className="save-button">
-                    🎉 Save My Profile
+                    <span className="button-icon">🎉</span> Save My Profile
                   </button>
                   <button
                     onClick={() => setIsEditing(false)}
                     className="cancel-button"
                   >
-                    ❌ Cancel
+                    <span className="button-icon">❌</span> Cancel
                   </button>
                 </>
               ) : (
@@ -312,7 +372,7 @@ const Profile = () => {
                   onClick={() => setIsEditing(true)}
                   className="edit-button"
                 >
-                  ✏️ Customize My Profile
+                  <span className="button-icon">✏️</span> Customize My Profile
                 </button>
               )}
             </div>
@@ -322,27 +382,59 @@ const Profile = () => {
 
       {activeTab === 'badges' && (
         <div className="badges-tab">
-          <h2>🏆 My Achievement Badges</h2>
+          <h2><span className="section-icon">🏆</span> My Achievement Badges</h2>
+          <p className="section-subtitle">Collect badges by completing challenges!</p>
+          
           <div className="badges-grid">
-            <div className="badge-card">
+            <div className="badge-card earned">
               <div className="badge-icon">⭐</div>
+              <div className="badge-ribbon"></div>
               <h3>First Steps</h3>
               <p>Completed your first lesson</p>
+              <div className="badge-date">Earned: Today!</div>
             </div>
             <div className="badge-card locked">
               <div className="badge-icon">🔒</div>
               <h3>Math Wizard</h3>
               <p>Complete 10 math challenges</p>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: '30%' }}></div>
+                <span>3/10</span>
+              </div>
             </div>
-            <div className="badge-card">
+            <div className="badge-card earned">
               <div className="badge-icon">📚</div>
+              <div className="badge-ribbon"></div>
               <h3>Bookworm</h3>
               <p>Read 5 stories</p>
+              <div className="badge-date">Earned: 2 days ago</div>
             </div>
             <div className="badge-card locked">
               <div className="badge-icon">🔒</div>
               <h3>Creative Genius</h3>
               <p>Create 3 projects</p>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: '66%' }}></div>
+                <span>2/3</span>
+              </div>
+            </div>
+            <div className="badge-card locked">
+              <div className="badge-icon">🔒</div>
+              <h3>Science Explorer</h3>
+              <p>Complete 5 science experiments</p>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: '20%' }}></div>
+                <span>1/5</span>
+              </div>
+            </div>
+            <div className="badge-card locked">
+              <div className="badge-icon">🔒</div>
+              <h3>Perfect Attendance</h3>
+              <p>Log in for 7 days in a row</p>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: '57%' }}></div>
+                <span>4/7</span>
+              </div>
             </div>
           </div>
         </div>
@@ -350,34 +442,65 @@ const Profile = () => {
 
       {activeTab === 'progress' && (
         <div className="progress-tab">
-          <h2>📈 My Learning Journey</h2>
+          <h2><span className="section-icon">📊</span> My Learning Journey</h2>
+          <p className="section-subtitle">See how much you've accomplished!</p>
+          
           <div className="progress-stats">
             <div className="stat-card">
+              <div className="stat-icon">📚</div>
               <div className="stat-value">7</div>
               <div className="stat-label">Lessons Completed</div>
             </div>
             <div className="stat-card">
+              <div className="stat-icon">🏆</div>
               <div className="stat-value">3</div>
               <div className="stat-label">Badges Earned</div>
             </div>
             <div className="stat-card">
+              <div className="stat-icon">🔥</div>
               <div className="stat-value">12</div>
-              <div className="stat-label">Learning Streak</div>
+              <div className="stat-label">Day Streak</div>
             </div>
           </div>
-          <div className="progress-chart">
-            <div className="chart-bar" style={{ height: '60%' }}>
-              <div className="chart-label">Math</div>
+          
+          <div className="subject-progress">
+            <h3>📈 Subject Progress</h3>
+            <div className="progress-chart">
+              <div className="chart-bar" style={{ height: '60%', backgroundColor: '#4CAF50' }}>
+                <div className="chart-label">Math</div>
+                <div className="chart-percent">60%</div>
+              </div>
+              <div className="chart-bar" style={{ height: '45%', backgroundColor: '#2196F3' }}>
+                <div className="chart-label">Reading</div>
+                <div className="chart-percent">45%</div>
+              </div>
+              <div className="chart-bar" style={{ height: '30%', backgroundColor: '#9C27B0' }}>
+                <div className="chart-label">Science</div>
+                <div className="chart-percent">30%</div>
+              </div>
+              <div className="chart-bar" style={{ height: '25%', backgroundColor: '#FF9800' }}>
+                <div className="chart-label">Art</div>
+                <div className="chart-percent">25%</div>
+              </div>
             </div>
-            <div className="chart-bar" style={{ height: '45%' }}>
-              <div className="chart-label">Reading</div>
-            </div>
-            <div className="chart-bar" style={{ height: '30%' }}>
-              <div className="chart-label">Science</div>
-            </div>
-            <div className="chart-bar" style={{ height: '25%' }}>
-              <div className="chart-label">Art</div>
-            </div>
+          </div>
+          
+          <div className="recent-achievements">
+            <h3>🎉 Recent Achievements</h3>
+            <ul className="achievements-list">
+              <li>
+                <span className="achievement-icon">⭐</span>
+                Completed "Introduction to Fractions" lesson
+              </li>
+              <li>
+                <span className="achievement-icon">📚</span>
+                Read "The Magic Treehouse" story
+              </li>
+              <li>
+                <span className="achievement-icon">🧪</span>
+                Finished "Volcano Experiment" activity
+              </li>
+            </ul>
           </div>
         </div>
       )}

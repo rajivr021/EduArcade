@@ -22,7 +22,7 @@ body {
 
 /* Main Container */
 .kids-game-browser {
-  max-width: 1400px;
+  max-width: 99%;
   margin: 0 auto;
   padding: 2rem;
   background: linear-gradient(135deg, #f5f7fa 0%, #e4f1fe 100%);

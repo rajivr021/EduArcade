@@ -304,7 +304,7 @@
   position: fixed;
     bottom: -39px;
     left: -35px;
-    z-index: 10;
+    /* z-index: 1; */
     width: 158px;
     height: auto;
 }
