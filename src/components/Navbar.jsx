@@ -5,7 +5,7 @@ import './Navbar.css';
 import './Profile.css'
 
 const Navbar = () => {
-  const { isSignedIn } = useUser();
+  const { isSignedIn,user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
 

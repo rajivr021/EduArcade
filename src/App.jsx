@@ -5,7 +5,7 @@ import SignUpPage from './components/SignUpPage'
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import Games from './components/Game'
-import Leaderboard from './components/LeaderBoard';
+import Leaderboard from './components/Leaderboard';
 
 const AppLayout = () => (
   <div className="app">

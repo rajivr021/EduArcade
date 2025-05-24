@@ -179,8 +179,8 @@
 
 /* Dark green background with white text for contrast */
 .cl-internal-13lvar6 {
-    background: #2e7d32 !important; /* Rich forest green */
-    color: white !important;
+    /* background: #2e7d32 !important; Rich forest green */
+    color: rgb(0, 0, 0) !important;
 }
 
 /* White text elements for dark green backgrounds */
@@ -188,7 +188,7 @@
 .cl-internal-168uxhv,
 .cl-internal-1jbqck3,
 .cl-internal-jurfxa {
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
 }
 
 /* Additional green-white theme elements */
@@ -211,7 +211,7 @@
 }
 
 .cl-internal-muj3sv{
-    background-image: linear-gradient(rgba(255, 255, 255, 0.788)),  url('./profileBG.jpg') !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.788)),  url('/gameImg/profileBG.jpg') !important;
     background-size: cover;
 }
 
@@ -220,4 +220,14 @@
 }
 .cl-internal-168uxhv{
     color: black !important;
+}
+
+.cl-internal-k7p5wl{
+     background-image: linear-gradient(rgba(255, 255, 255, 0.788)),  url('/gameImg/profileBG.jpg') !important;
+    background-size: cover;
+}
+
+ .cl-internal-13lvar6{
+     background-image: linear-gradient(rgba(255, 255, 255, 0.788)),  url('/gameImg/profileBG.jpg') !important;
+    background-size: cover;
 }
