@@ -4,7 +4,6 @@ import SignInPage from './components/SignInPage';
 import SignUpPage from './components/SignUpPage'
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
-import Profile from './components/Profile';
 import Games from './components/Game'
 import Leaderboard from './components/LeaderBoard';
 
@@ -25,7 +24,6 @@ const appRouter = createBrowserRouter([
     ),
     children: [
       { index: true, element: <Home /> },
-      { path: 'profile', element: <Profile />, },
       { path: 'games', element: <Games />, },
       { path: 'leaderboard', element: <Leaderboard />, },
     ],

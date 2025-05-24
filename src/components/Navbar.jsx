@@ -1,52 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useUser, useAuth } from '@clerk/clerk-react';
+import { useUser, UserButton } from '@clerk/clerk-react';
 import './Navbar.css';
+import './Profile.css'
 
 const Navbar = () => {
-  const { user, isSignedIn } = useUser();
-  const { signOut } = useAuth();
-
+  const { isSignedIn } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const toggleMenu = () => setIsOpen(prev => !prev);
   const handleHover = (item) => setHoveredItem(item);
   const handleLeave = () => setHoveredItem(null);
-  const handleLogout = async () => {
-    await signOut();
-  };
 
   const navItems = [
-    { path: "/", icon: <img className='nav-img' src='./home.gif'/>, name: "" ,id:1321},
-    { path: "/games", icon: <img className='nav-img' src='./LB/Games.gif'/>, name: "" ,id:1121},
-    { path: "/leaderboard", icon: <img className='nav-img' src='./LB/lbNav.gif'/>, name: "" ,id:1311},
+    { path: "/", icon: <img className='nav-img' src='./home.gif' />, name: "", id: 1321 },
+    { path: "/games", icon: <img className='nav-img' src='./LB/Games.gif' />, name: "", id: 1121 },
+    { path: "/leaderboard", icon: <img className='nav-img' src='./LB/lbNav.gif' />, name: "", id: 1311 },
     ...(isSignedIn
-      ? [{
-          path: "/Profile",
-          icon: (
-            <div className="avatar-container">
-              <img
-                src={user?.imageUrl || '/default-avatar.png'}
-                alt="User Avatar"
-                className="navprofile-avatar"
-                onError={(e) => {
-                  e.target.src = '/default-avatar.png';
-                }}
-              />
-              {hoveredItem === 'Profile' && (
-                <div className="avatar-glow" />
-              )}
-            </div>
-          ),
-          name: user?.firstName || "Profile",
-          isProfile: true,
-        }]
+      ? []
       : [{
-          path: "/sign-in",
-          icon: "🔑",
-          name: "Log In",
-        }]
+        path: "/sign-in",
+        icon: "🔑",
+        name: "Log In",
+        id: 1411
+      }]
     )
   ];
 
@@ -98,24 +76,31 @@ const Navbar = () => {
             <Link
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className={hoveredItem === item.name ? "active" : ""}
+              className={hoveredItem === item.id ? "active" : ""}
             >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-text">{item.name}</span>
-              {item.isProfile && <div className="profile-badge HoverNone" />}
               <div className="leaf-trail" />
             </Link>
           </li>
         ))}
-
         {isSignedIn && (
-         <li>
-  <button onClick={handleLogout} className="logout-btn">
-    <span className="nav-icon">🚪</span>
-    <span className="nav-text">Log Out</span>
-    <div className="leaf-trail" />
-  </button>
-</li>
+          <li className="user-button-li">
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonPopoverRoot: 'user-popover-root',
+                  userButtonPopoverCard: 'user-popover-card',
+                  userButtonPopoverFooter: 'user-popover-footer',
+                  userButtonPopoverActionButton: 'user-popover-action-btn',
+                  userPreviewMainIdentifier: 'user-preview-name',
+                  userPreviewSecondaryIdentifier: 'user-preview-email',
+                  avatarImage: 'user-popover-avatar',
+                  userButtonPopoverActionButtonIcon: 'action-btn-icon'
+                }
+              }}
+            />
+          </li>
         )}
       </ul>
     </nav>
