@@ -1,12 +1,36 @@
-# React + Vite
+# EduArcade 🎮📚
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive educational gaming platform that makes learning magical!
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Features](#-features)
+- [Demo](#-demo)
+- [Installation](#-installation)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Environment Variables](#-environment-variables)
+- [Available Scripts](#-available-scripts)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgements](#-acknowledgements)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Gamified Learning**: Engaging educational games across multiple subjects
+- **Progress Tracking**: Student performance analytics and achievements
+- **Responsive Design**: Works seamlessly on all devices
+- **Secure Authentication**: Powered by Clerk for safe user management
+- **Interactive UI**: Beautiful forest-themed interface with animations
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎥 Demo
+
+[Live Demo](https://eduarcade.netlify.app/)
+
+## 🛠️ Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rajivr021/EduArcade.git
+   cd EduArcade
+
+   

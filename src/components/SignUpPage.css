@@ -210,7 +210,7 @@
   .sign-up-container {
     flex-direction: row;
     gap: 5rem;
-    padding: 3rem;
+    padding: 1rem 3rem;
   }
 
   .forest-welcome {
@@ -286,15 +286,6 @@ gap:0 !important;
   cursor: pointer;
 }
 
-/* Vibrate animation */
-/* @keyframes vibrate {
-  0% { transform: scale(1.2) rotate(5deg) translate(0); }
-  20% { transform: scale(1.2) rotate(5deg) translate(-2px, 1px); }
-  40% { transform: scale(1.2) rotate(5deg) translate(2px, -1px); }
-  60% { transform: scale(1.2) rotate(5deg) translate(-1px, 2px); }
-  80% { transform: scale(1.2) rotate(5deg) translate(1px, -2px); }
-  100% { transform: scale(1.2) rotate(5deg) translate(0); }
-} */
 
 .forestwelcomeParagraph{
   color: #2e7d32 !important;
@@ -306,4 +297,8 @@ gap:0 !important;
 
 .cl-internal-iz4t98{
   color: black !important;
+}
+
+.cl-internal-1yvrr2i{
+  display: flex !important;
 }
