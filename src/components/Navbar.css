@@ -434,3 +434,72 @@
 }
 
 
+
+
+
+.tippy-box[data-theme~='forest'] {
+  background: linear-gradient(to right, #355c40, #5b885d);
+  color: #fffbd1;
+  font-family: 'Comic Sans MS', cursive;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 6px 10px;
+  box-shadow: 0 0 15px rgba(50, 205, 50, 0.5);
+  border: 1px solid #b3e7b3;
+  animation: forestFade 0.5s ease-in-out;
+}
+
+.tooltip-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Optional tooltip fade animation */
+@keyframes forestFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.visually-hidden{
+  visibility: hidden;
+}
+
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipvs-text {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background-color: #2f4f2f;
+  color: #fff;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Comic Neue', cursive;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
+
+.tooltip-container:hover .tooltipvs-text {
+  visibility: visible;
+  opacity: 1;
+}
