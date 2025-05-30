@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import gamesData from './gamesData';
 import { Link } from 'react-router-dom';
 import './Game.css';
+import Pagination from './Pagination.jsx'; // adjust path if needed
+
 
 const ITEMS_PER_PAGE = 12;
 
@@ -17,10 +19,10 @@ const Game = () => {
       gameId,
       timestamp: new Date().toISOString()
     };
-    
+
     // Get existing plays from localStorage or initialize empty array
     const existingPlays = JSON.parse(localStorage.getItem('gamePlays')) || [];
-    
+
     // Add new play and save back to localStorage
     localStorage.setItem('gamePlays', JSON.stringify([...existingPlays, playData]));
   };
@@ -86,10 +88,10 @@ const Game = () => {
       <div className="game-grid">
         {visibleGames.length > 0 ? (
           visibleGames.map((game) => (
-            <Link 
-              to={game.url} 
+            <Link
+              to={game.url}
               target="_blank"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
               className="game-link"
               onClick={() => recordGamePlay(game.id)} // Record play when clicked
               key={game.id} // Moved key here for better React practice
@@ -124,36 +126,13 @@ const Game = () => {
       </div>
 
       {filteredGames.length > ITEMS_PER_PAGE && (
-        <div className="pagination-controls">
-          <button
-            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-            disabled={currentPage === 1}
-            className="pagination-btn"
-          >
-            ◀ Previous
-          </button>
-
-          <div className="page-numbers">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`page-btn ${currentPage === i + 1 ? 'active' : ''}`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-            disabled={currentPage === totalPages}
-            className="pagination-btn"
-          >
-            Next ▶
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       )}
+
     </div>
   );
 };

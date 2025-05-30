@@ -108,7 +108,7 @@ const Navbar = () => {
                 className={hoveredItem === item.id ? "active" : ""}
               >
                 <span className="nav-icon">{item.icon}</span>
-                <span className="nav-text visually-hidden">{item.name}</span>
+                {/* <span className="nav-text visually-hidden">{item.name}</span> */}
                 <div className="leaf-trail" />
               </Link>
             </Tippy>
@@ -132,7 +132,6 @@ const Navbar = () => {
                   },
                 }}
               />
-              <span className="tooltipvs-text">View Profile</span>
             </div>
           </li>
         )}

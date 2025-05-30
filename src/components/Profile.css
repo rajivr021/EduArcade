@@ -163,15 +163,15 @@
     transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
+.cl-internal-df7v37 {
+    display: none;
+}
 .user-button-li:hover {
     transform: scale(1.2);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 
-.cl-internal-df7v37 {
-    display: none;
-}
 /* Light green gradient background */
 .cl-internal-c2xpfh {
     background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%) !important;

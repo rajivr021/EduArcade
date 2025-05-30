@@ -1,0 +1,351 @@
+/* Enchanted Forest Pagination */
+.enchanted-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px 0;
+  position: relative;
+  background: radial-gradient(ellipse at center, #17b651 0%, #000000 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 20, 30, 0.5);
+}
+
+.moonlight {
+  position: absolute;
+  top: -50px;
+  right: 20%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  filter: blur(5px);
+  opacity: 0.3;
+}
+
+.forest-nav {
+  position: relative;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #1a3a3a, #0e2929);
+  color: #c8e0d0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.forest-nav:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 40, 50, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(145deg, #1e4242, #113030);
+  color: #e0f0e8;
+}
+
+.forest-nav.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nav-arrow {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.forest-nav:hover:not(.disabled) .nav-arrow {
+  transform: scale(1.2);
+}
+
+.deer-track {
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, 
+              transparent 0%, 
+              rgba(200, 180, 150, 0.3) 30%, 
+              rgba(200, 180, 150, 0.1) 70%, 
+              transparent 100%);
+  border-radius: 2px;
+}
+
+.prev .deer-track {
+  left: -50px;
+  top: 50%;
+}
+
+.next .deer-track {
+  right: -50px;
+  top: 50%;
+}
+
+.pages-trail {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.trail-marker {
+  display: flex;
+  align-items: center;
+}
+
+.trail-connector {
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+              #3a5f3a 0%, 
+              rgba(58, 95, 58, 0.5) 100%);
+  position: relative;
+}
+
+.trail-connector::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    rgba(168, 216, 168, 0.3) 3px,
+    rgba(168, 216, 168, 0.3) 6px
+  );
+}
+
+.trail-gap {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.page-mushroom {
+  width: 40px;
+  height: 50px;
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mushroom-cap {
+  width: 30px;
+  height: 20px;
+  background: linear-gradient(145deg, #ff6b6b, #cc5555);
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.mushroom-cap::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.mushroom-cap::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 7px;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.mushroom-stem {
+  width: 12px;
+  height: 25px;
+  background: linear-gradient(to right, #e8d8b0, #d0c090);
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.page-number {
+  position: absolute;
+  top: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.page-mushroom:hover {
+  transform: translateY(-5px);
+}
+
+.page-mushroom.glowing {
+  animation: mushroom-bounce 0.8s ease;
+}
+
+@keyframes mushroom-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.mushroom-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255,200,100,0.4) 0%, rgba(255,200,100,0) 70%);
+  top: -10px;
+  z-index: 0;
+  animation: glow-pulse 2s infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+.fairy-dust {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -20px;
+  left: 0;
+  z-index: 1;
+}
+
+.fairy-dust::before,
+.fairy-dust::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: fairy-float 3s infinite linear;
+}
+
+.fairy-dust::before {
+  top: 15px;
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.fairy-dust::after {
+  top: 5px;
+  right: 8px;
+  animation-delay: 1.5s;
+}
+
+@keyframes fairy-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.mushroom-hover {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(168,216,168,0.3) 0%, rgba(168,216,168,0) 70%);
+  top: -10px;
+  z-index: 0;
+}
+
+.fireflies {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  transform: translateY(-50%);
+}
+
+.firefly {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #f8e58c;
+  border-radius: 50%;
+  filter: blur(0.5px);
+  animation: firefly-float 4s infinite ease-in-out;
+}
+
+.firefly:nth-child(1) {
+  left: 5px;
+  animation-delay: 0s;
+}
+
+.firefly:nth-child(2) {
+  left: 15px;
+  animation-delay: 1.3s;
+}
+
+.firefly:nth-child(3) {
+  left: 25px;
+  animation-delay: 2.7s;
+}
+
+@keyframes firefly-float {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .enchanted-pagination {
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 20px 10px;
+  }
+  
+  .forest-nav {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .trail-connector,
+  .trail-gap {
+    width: 15px;
+  }
+  
+  .page-mushroom {
+    width: 30px;
+    height: 40px;
+  transform: scale(0.9);
+  }
+}
