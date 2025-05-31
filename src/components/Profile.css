@@ -231,3 +231,13 @@
      background-image: linear-gradient(rgba(255, 255, 255, 0.788)),  url('/gameImg/profileBG.jpg') !important;
     background-size: cover;
 }
+
+
+.tooltip-container{
+    cursor: pointer;
+}
+
+
+.user-popover-avatar:hover{
+    pointer-events: none;
+}

@@ -9,6 +9,7 @@
   background: radial-gradient(ellipse at center, #17b651 0%, #000000 100%);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 20, 30, 0.5);
+  overflow: hidden;
 }
 
 .moonlight {
@@ -330,7 +331,7 @@
   .enchanted-pagination {
     flex-wrap: wrap;
     gap: 5px;
-    padding: 20px 10px;
+    padding: 20px 5px;
   }
   
   .forest-nav {
@@ -347,5 +348,38 @@
     width: 30px;
     height: 40px;
   transform: scale(0.9);
+  }
+
+  .deer-track {
+    display: none; /* Hide deer tracks on mobile */
+  }
+
+  
+  .moonlight {
+    right: 10%;
+    width: 60px;
+    height: 60px;
+    top: -40px;
+  }
+  
+  /* Modify your existing mobile styles */
+  .forest-nav {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .pages-trail {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .trail-connector,
+  .trail-gap {
+    display: none; /* Hide connectors on mobile */
+  }
+  
+  .page-mushroom {
+    margin: 0 5px;
   }
 }

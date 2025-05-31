@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useUser, UserButton } from "@clerk/clerk-react";
 import "./Navbar.css";
@@ -6,32 +6,45 @@ import "./Profile.css";
 
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import BirdGreeting from "./BirdGreeting";
 
 const Navbar = () => {
   const { isSignedIn, user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const navRef = useRef();
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const handleHover = (item) => setHoveredItem(item);
   const handleLeave = () => setHoveredItem(null);
 
+  // 👉 Close menu on outside click (mobile view fix)
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
   const navItems = [
     {
       path: "/",
-      icon: <img className="nav-img" src="./home.gif" />,
+      icon: <img className="nav-img" src="./home.gif" alt="Home" />,
       name: "Home",
       id: 1321,
     },
     {
       path: "/games",
-      icon: <img className="nav-img" src="./LB/Games.gif" />,
+      icon: <img className="nav-img" src="./LB/Games.gif" alt="Games" />,
       name: "Games",
       id: 1121,
     },
     {
       path: "/leaderboard",
-      icon: <img className="nav-img" src="./LB/lbNav.gif" />,
+      icon: <img className="nav-img" src="./LB/lbNav.gif" alt="Leaderboard" />,
       name: "Leaderboard",
       id: 1311,
     },
@@ -48,7 +61,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="forest-navbar">
+    <nav className="forest-navbar" ref={navRef}>
       {/* Logo */}
       <Link
         to="/"
@@ -69,7 +82,7 @@ const Navbar = () => {
         )}
       </Link>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Toggle */}
       <button
         className={`menu-toggle ${isOpen ? "open" : ""}`}
         onClick={toggleMenu}
@@ -108,34 +121,39 @@ const Navbar = () => {
                 className={hoveredItem === item.id ? "active" : ""}
               >
                 <span className="nav-icon">{item.icon}</span>
-                {/* <span className="nav-text visually-hidden">{item.name}</span> */}
-                <div className="leaf-trail" />
+                <span className="nav-text visually-hidden">{item.name}</span>
               </Link>
             </Tippy>
           </li>
         ))}
 
         {isSignedIn && (
-          <li className="user-button-li">
-            <div className="tooltip-container">
-              <UserButton
-                appearance={{
-                  elements: {
-                    userButtonPopoverRoot: "user-popover-root",
-                    userButtonPopoverCard: "user-popover-card",
-                    userButtonPopoverFooter: "user-popover-footer",
-                    userButtonPopoverActionButton: "user-popover-action-btn",
-                    userPreviewMainIdentifier: "user-preview-name",
-                    userPreviewSecondaryIdentifier: "user-preview-email",
-                    avatarImage: "user-popover-avatar",
-                    userButtonPopoverActionButtonIcon: "action-btn-icon",
-                  },
-                }}
-              />
-            </div>
-          </li>
+          <>
+            <li className="user-button-li">
+              <div className="user-button-container">
+                <UserButton
+                  appearance={{
+                    elements: {
+                      userButtonPopoverRoot: "user-popover-root",
+                      userButtonPopoverCard: "user-popover-card",
+                      userButtonPopoverFooter: "user-popover-footer",
+                      userButtonPopoverActionButton: "user-popover-action-btn",
+                      userPreviewMainIdentifier: "user-preview-name",
+                      userPreviewSecondaryIdentifier: "user-preview-email",
+                      avatarImage: "user-popover-avatar",
+                      userButtonPopoverActionButtonIcon: "action-btn-icon",
+                    },
+                  }}
+                />
+              </div>
+            </li>
+            <li className="bird-greeting-li">
+              <BirdGreeting user={user.firstName} />
+            </li>
+          </>
         )}
       </ul>
+
     </nav>
   );
 };

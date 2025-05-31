@@ -6,11 +6,11 @@ import './ProtectedRoute.css';
 
 const LoadingAnimation = () => {
   const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f59e0b'];
-  
+
   return (
     <div className="loading-container">
       <div className="loading-content">
-        <motion.div 
+        <motion.div
           className="loading-logo"
           animate={{
             rotate: 360,
@@ -23,8 +23,8 @@ const LoadingAnimation = () => {
           }}
         >
           <svg viewBox="0 0 100 100" className="logo-svg">
-            <path 
-              d="M50 10 L75 40 L65 70 L35 70 L25 40 Z" 
+            <path
+              d="M50 10 L75 40 L65 70 L35 70 L25 40 Z"
               fill="url(#gradient)"
             />
             <defs>
@@ -35,9 +35,9 @@ const LoadingAnimation = () => {
             </defs>
           </svg>
         </motion.div>
-        
-        <h2 className="loading-text">Securing Your Journey</h2>
-        
+
+        <h2 className="loading-text">Loading Fun and Games Just for You!</h2>
+
         <div className="loading-dots">
           {colors.map((color, i) => (
             <motion.div
@@ -57,7 +57,7 @@ const LoadingAnimation = () => {
             />
           ))}
         </div>
-        
+
         <div className="progress-track">
           <motion.div
             className="progress-bar"
@@ -71,10 +71,10 @@ const LoadingAnimation = () => {
             }}
           />
         </div>
-        
-        <p className="loading-subtext">Authenticating with advanced security</p>
+
+        <p className="loading-subtext">Gears are turning and magic is happening... Almost there!</p>
       </div>
-      
+
       <div className="loading-background">
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div

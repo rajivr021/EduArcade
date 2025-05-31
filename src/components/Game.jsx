@@ -53,7 +53,7 @@ const Game = () => {
   return (
     <div className="kids-game-browser">
       <header className="browser-header">
-        <h1><img className='GameImg' src='/game.png' alt="" /> Fun Game World <img className='GameImg' src='/game.png' alt="" /> </h1>
+        <h1><img className='GameImg' src='/game.png' alt="" />Brainy Play Zone<img className='GameImg' src='/game.png' alt="" /> </h1>
 
         <div className="search-container">
           <div className="search-box">

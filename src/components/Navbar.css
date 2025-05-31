@@ -254,6 +254,7 @@
   
   /* Responsive Design */
   @media (max-width: 768px) {
+ 
     .menu-toggle {
       display: flex;
       justify-content: center;
@@ -265,7 +266,7 @@
       top: 0;
       left: 0;
       width: 70%;
-      height: 100vh;
+      height: 102vh;
       background: linear-gradient(to right, #2d5a27, #1e3f14);
       flex-direction: column;
       justify-content: center;
@@ -418,7 +419,7 @@
 .user-button-li {
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .user-button-box {
@@ -468,12 +469,46 @@
   }
 }
 
-.visually-hidden{
-  visibility: hidden;
+/* Default: hide nav text (for desktop view with tooltip) */
+.nav-text.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile / Vertical view: show nav text */
+@media (max-width: 768px) {
+  .nav-text.visually-hidden {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding-left: 8px;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    display: inline;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  /* Optional: hide Tippy tooltips on mobile */
+  .tippy-box {
+    display: none !important;
+  }
+
+  .nav-links li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
 }
 
 
 /* -------------------------------- */
-
-
-

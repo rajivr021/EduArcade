@@ -58,3 +58,76 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
 }
+
+
+/* Base styles assumed to already exist */
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .loading-container {
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .loading-content {
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .loading-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .loading-text {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .loading-subtext {
+    font-size: 0.9rem;
+    padding: 0 10px;
+    color: #888;
+  }
+
+  .loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 6px;
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: #6366f1;
+  }
+
+  .loading-background {
+    display: none; /* Hide background particles for better performance */
+  }
+}
