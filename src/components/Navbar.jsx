@@ -38,13 +38,13 @@ const Navbar = () => {
     ...(isSignedIn
       ? []
       : [
-          {
-            path: "/sign-in",
-            icon: "🔑",
-            name: "Log In",
-            id: 1411,
-          },
-        ]),
+        {
+          path: "/sign-in",
+          icon: "🔑",
+          name: "Log In",
+          id: 1411,
+        },
+      ]),
   ];
 
   return (

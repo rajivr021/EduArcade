@@ -302,3 +302,36 @@ gap:0 !important;
 .cl-internal-1yvrr2i{
   display: flex !important;
 }
+
+
+
+/* ------------ */
+.SignUpLoader {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.SignUpLoader span {
+  width: 10px;
+  height: 10px;
+  background: #046c2d;
+  border-radius: 50%;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.SignUpLoader span:nth-child(1) { animation-delay: 0s; }
+.SignUpLoader span:nth-child(2) { animation-delay: 0.2s; }
+.SignUpLoader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes wave {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-15px); }
+}
+
+/* Hover to pause */
+.SignUpLoader:hover span {
+  animation-play-state: paused;
+}

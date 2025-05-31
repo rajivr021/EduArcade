@@ -344,3 +344,86 @@
 .cl-internal-iz4t98{
   color: black !important;
 }
+
+
+
+
+
+/* -------------- */
+.SignInLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 450px;
+  perspective: 800px;
+}
+
+.SignInLoader span {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate-cube 4s infinite linear; /* Slower for clarity */
+}
+
+/* Cube Faces - Adjusted for no overlap */
+.SignInLoader span::before,
+.SignInLoader span::after,
+.SignInLoader span i {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(16, 186, 92, 0.8);
+  border-radius: 4px;
+  background: rgba(14, 168, 83, 0.8);
+  box-sizing: border-box; /* Ensures borders don't expand size */
+}
+
+/* Front/Back faces - Push further along Z-axis */
+.SignInLoader span::before {
+  transform: translateZ(21px); /* Slightly beyond half-width */
+}
+.SignInLoader span::after {
+  transform: translateZ(-21px);
+}
+
+/* Side faces - Adjusted to avoid seams */
+.SignInLoader span i:nth-child(1) {
+  transform: rotateY(90deg) translateZ(21px);
+}
+.SignInLoader span i:nth-child(2) {
+  transform: rotateY(-90deg) translateZ(21px);
+}
+.SignInLoader span i:nth-child(3) {
+  transform: rotateX(90deg) translateZ(21px);
+}
+.SignInLoader span i:nth-child(4) {
+  transform: rotateX(-90deg) translateZ(21px);
+}
+
+/* Smoother rotation (no diagonal flips) */
+@keyframes rotate-cube {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+/* Optional: Add depth on hover */
+.SignInLoader:hover span {
+  transform: rotateY(180deg) rotateX(45deg) scale(1.2);
+  transition: transform 0.5s ease;
+}
+
+.custom-signin-card {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

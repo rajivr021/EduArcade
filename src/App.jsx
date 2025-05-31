@@ -35,23 +35,7 @@ const appRouter = createBrowserRouter([
 {
   path: '/sign-up/*',
   element: <SignUpPage />,
-},
-{
-  path: '/sign-in/factor-one',
-  element: <SignInPage />,
-},
-{
-  path: '/sign-in/identifier-link',
-  element: <SignInPage />,
-},
-{
-  path: '/sign-up/verify',
-  element: <SignUpPage />,
-},
-{
-  path: '/sign-up/sso-callback',
-  element: <SignUpPage />,
-},
+}
 
 
 ]);
