@@ -254,7 +254,6 @@
   
   /* Responsive Design */
   @media (max-width: 768px) {
- 
     .menu-toggle {
       display: flex;
       justify-content: center;
@@ -266,7 +265,7 @@
       top: 0;
       left: 0;
       width: 70%;
-      height: 102vh;
+      height: 100vh;
       background: linear-gradient(to right, #2d5a27, #1e3f14);
       flex-direction: column;
       justify-content: center;
@@ -419,7 +418,7 @@
 .user-button-li {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .user-button-box {
@@ -469,46 +468,53 @@
   }
 }
 
-/* Default: hide nav text (for desktop view with tooltip) */
-.nav-text.visually-hidden {
+.visually-hidden{
+  display: none;
+}
+
+
+
+/* Container to wrap the avatar + tooltip */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip content with BirdGreeting */
+.tooltipvs-text {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
+  bottom: -45px; /* Adjust distance below the avatar */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #2f4f2f;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Comic Neue', cursive;
   white-space: nowrap;
-  border: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Mobile / Vertical view: show nav text */
-@media (max-width: 768px) {
-  .nav-text.visually-hidden {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    padding-left: 8px;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-    display: inline;
-    font-size: 1rem;
-    color: #fff;
-  }
-
-  /* Optional: hide Tippy tooltips on mobile */
-  .tippy-box {
-    display: none !important;
-  }
-
-  .nav-links li {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
+/* Show tooltip on hover */
+.tooltip-container:hover .tooltipvs-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 
-/* -------------------------------- */
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.user-button-li {
+  position: relative;
+  z-index: 100;
+}

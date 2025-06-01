@@ -1,0 +1,130 @@
+.frog-activator {
+  width: 100%;
+  height: auto;              /* Let it grow as needed */
+  min-height: 260px;         /* Ensure space for speech and secret */
+  position: relative;
+  cursor: pointer;
+  overflow: visible !important;  /* Key Fix: allow overflow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;   /* Stack speech > frog > message */
+}
+
+.parent-container {
+  position: relative;
+  overflow: visible !important;  /* Prevent clipping */
+  height: auto;
+  padding: 50px 0;               /* Add padding if needed */
+}
+
+.frog-wrapper {
+  position: relative;
+  width: 150px;
+  /* height: 150px; */
+  transition: transform 0.3s ease;
+}
+
+
+
+.frog-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.frog-container.happy {
+  animation: bounce 0.4s ease;
+}
+
+.frog-container.special {
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px gold;
+  background: rgba(255, 255, 150, 0.3);
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.frog-image {
+  width: 100px;
+  /* height: 100px; */
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+.frog-image.spin {
+  animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.speech-bubble {
+  position: absolute;
+  top: -75px; /* moved higher above the frog */
+  left: 0;
+  transform: translateX(-50%);
+  background: #fff8dc;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 2px solid #333;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  animation: popIn 0.3s ease;
+  text-align: center;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5) translateX(-50%); opacity: 0; }
+  100% { transform: scale(1) translateX(-50%); opacity: 1; }
+}
+
+.click-counter {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.secret-message {
+  position: absolute;
+  top: 160px; /* below the frog */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: #f50;
+  background: #fff0f0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px dashed #f50;
+  animation: pulse 1s ease-in-out infinite;
+  z-index: 3;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.fireworks {
+  font-size: 24px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) translateX(-50%); opacity: 1; }
+  50% { transform: scale(1.05) translateX(-50%); opacity: 0.8; }
+  100% { transform: scale(1) translateX(-50%); opacity: 1; }
+}
