@@ -12,11 +12,16 @@
   "dependencies": {
     "@clerk/clerk-react": "^5.31.4",
     "@tippyjs/react": "^4.2.6",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.15.0",
+    "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.30.0",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {

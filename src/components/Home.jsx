@@ -1,35 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AboutUs from './AboutUs'
+import AboutUs from './AboutUs';
 import "./Home.css";
 import Footer from "./Footer";
+import gamesData from './gamesData';
+import FeaturedGames from './FeaturedGames'
 
 const Home = () => {
   const [typedText, setTypedText] = useState("");
   const [activeGame, setActiveGame] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Sample featured games data
-  const featuredGames = [
-    {
-      id: 1,
-      name: "Math Adventure",
-      category: "Mathematics",
-      color: "var(--primary)"
-    },
-    {
-      id: 2,
-      name: "Word Explorer",
-      category: "Language",
-      color: "var(--secondary)"
-    },
-    {
-      id: 3,
-      name: "Science Quest",
-      category: "Science",
-      color: "var(--accent)"
-    }
-  ];
+  // Get top 3 games (you can modify the sorting criteria as needed)
+  const topGames = gamesData.slice(0, 3);
 
   const subtitleText = "Learn and Play with Our Collection of Educational Games";
 
@@ -57,18 +40,18 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  // Game carousel effect
+  // Game carousel effect for top 3 games
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true);
       setTimeout(() => {
-        setActiveGame((prev) => (prev + 1) % featuredGames.length);
+        setActiveGame((prev) => (prev + 1) % topGames.length);
         setIsAnimating(false);
       }, 500);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [topGames.length]);
 
   return (
     <div className="home-container">
@@ -104,33 +87,12 @@ const Home = () => {
         </div>
         
         <div className="hero-image">
-          <img src="/WalnutTree.gif"/>
+          <img src="/WalnutTree.gif" alt="Nature's Classroom" />
         </div>
       </section>
 
-      {/* Featured Games Preview */}
-      <section className="featured-section">
-        <h2 className="section-title">Games</h2>
-        <div className="games-carousel">
-          {featuredGames.map((game, index) => (
-            <div 
-              key={game.id}
-              className={`game-card ${index === activeGame ? "active" : ""} ${isAnimating ? "animating" : ""}`}
-              style={{ '--card-color': game.color }}
-              onClick={() => setActiveGame(index)}
-            >
-              <div className="game-content">
-                <h3>{game.name}</h3>
-                <p>{game.category}</p>
-                <Link to={`/game/${game.id}`} className="play-button">
-                  Play Now
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      {/* Featured Games Preview - Now showing only top 3 games */}
+        <FeaturedGames games={gamesData} />
       {/* Benefits Section */}
       <section className="benefits-section">
         <h2 className="section-title">Why Choose Our Platform</h2>
@@ -167,9 +129,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-          <AboutUs/>
-          <Footer/>
-     </div>
+      
+      <AboutUs/>
+      <Footer/>
+    </div>
   );
 };
 

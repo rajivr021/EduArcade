@@ -70,7 +70,7 @@ const Navbar = () => {
                 onMouseLeave={handleLeave}
             >
                 <div className={`logo-tree ${hoveredItem === "logo" ? "swaying" : ""}`}>
-                    🌲
+                    <img className="NavLogo" alt="Logo" src="/NavLogo/Mushroom.gif"/>
                 </div>
                 <span className="logo-text">EduArcade</span>
                 {hoveredItem === "logo" && (
@@ -129,10 +129,12 @@ const Navbar = () => {
                 ))}
 
                 {isSignedIn && (
-                    <li className="user-button-li" style={{ position: "relative" }}>
+                    <li className="user-button-li">
                         <div
                             className="tooltip-container"
-                            onMouseEnter={() => setShowGreeting(true)}
+                            onMouseEnter={() => {
+                                setShowGreeting(true);
+                            }}
                             onMouseLeave={() => setShowGreeting(false)}
                         >
                             <UserButton
@@ -141,8 +143,7 @@ const Navbar = () => {
                                         userButtonPopoverRoot: "user-popover-root",
                                         userButtonPopoverCard: "user-popover-card",
                                         userButtonPopoverFooter: "user-popover-footer",
-                                        userButtonPopoverActionButton:
-                                            "user-popover-action-btn",
+                                        userButtonPopoverActionButton: "user-popover-action-btn",
                                         userPreviewMainIdentifier: "user-preview-name",
                                         userPreviewSecondaryIdentifier: "user-preview-email",
                                         avatarImage: "user-popover-avatar",
@@ -153,11 +154,10 @@ const Navbar = () => {
 
                             {showGreeting && (
                                 <div
+                                    className="greeting-positioner"
                                     style={{
-                                        position: "absolute",
-                                        top: 40 + greetingPosition.y,
-                                        left: -100 + greetingPosition.x,
-                                        zIndex: 999,
+                                        top: '50px', 
+                                        left: '-200px'
                                     }}
                                 >
                                     <HiGreeting user={user.firstName} />

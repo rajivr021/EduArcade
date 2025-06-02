@@ -518,3 +518,10 @@
   position: relative;
   z-index: 100;
 }
+
+
+.NavLogo {
+  width: 50px;
+  vertical-align: middle;
+  /* margin: 0 10px; */
+}

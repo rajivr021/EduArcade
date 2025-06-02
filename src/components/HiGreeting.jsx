@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HiGreeting.css";
 
 const HiGreeting = ({ user }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHappy, setIsHappy] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [currentFrog, setCurrentFrog] = useState(0);
+  const [currentImage, setCurrentImage] = useState("");
   const [currentMessage, setCurrentMessage] = useState("");
+  const [clickCount, setClickCount] = useState(0);
+  const [mood, setMood] = useState("");
+  const [isSpecial, setIsSpecial] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [showSecret, setShowSecret] = useState(false);
 
-  const frogImages = [
-    "./sayHi/Bee.gif",
-    "./sayHi/bird.gif",
-    "./sayHi/BirdFlying.gif",
+  const images = [
+    "./sayHi/new/cat.gif",
+    "./sayHi/new/cartoon.gif",
+    "./sayHi/new/Blob Bat.gif",
     "./sayHi/Frog.gif",
-    "./sayHi/Geolocation.gif",
+    "./sayHi/new/Cat Say Hello.gif",
     "./sayHi/HiOwl.gif",
     "./sayHi/Monkey.gif",
     "./sayHi/Panda.gif",
-    "./sayHi/Parrot.gif",
+    "./sayHi/new/Parrot.gif",
+    "./sayHi/new/Parrot1.gif",
+    "./sayHi/new/Owl.gif",
+    "./sayHi/new/Parrot Listening.gif",
+    "./sayHi/new/well mate.gif",
+    "./sayHi/new/Parrot Worm.gif",
   ];
 
   const messages = [
@@ -32,110 +38,118 @@ const HiGreeting = ({ user }) => {
     `🎈 Hover power... BOING!`,
     `🦄 A unicorn whispered: ${user} is cool!`,
     `🚀 ${user} is blasting off to fun!`,
-    `🎮 Press START to play with ${user}!`,
-    `🧸 ${user}'s teddy bear approves!`,
-    `🎵 La-la-la! ${user} is here to sing!`,
-    `🦕 Roar! ${user} is dino-mite!`,
-    `🍭 Sweet! You found ${user}!`,
   ];
 
+  const specialMessages = [
+    `✨ ${user}, you're magical! ✨`,
+    `🎯 BULLSEYE! Perfect click, ${user}!`,
+    `🏆 Champion clicker alert!`,
+    `💎 You found a rare greeting!`,
+    `👑 All hail ${user}, the click master!`
+  ];
+
+  const getRandomGreeting = () => {
+    const randomImageIndex = Math.floor(Math.random() * images.length);
+    let randomMessageIndex = Math.floor(Math.random() * messages.length);
+    
+    // Determine mood and special status
+    const newMood = randomMessageIndex % 3 === 0 ? "happy" : "";
+    const newIsSpecial = randomMessageIndex % 5 === 0;
+    
+    // If it's special, use a special message
+    if (newIsSpecial) {
+      randomMessageIndex = Math.floor(Math.random() * specialMessages.length);
+      return {
+        image: images[randomImageIndex],
+        message: specialMessages[randomMessageIndex],
+        mood: "special",
+        isSpecial: true
+      };
+    }
+    
+    return {
+      image: images[randomImageIndex],
+      message: messages[randomMessageIndex],
+      mood: newMood,
+      isSpecial: false
+    };
+  };
+
+  useEffect(() => {
+    if (user) {
+      setIsVisible(true);
+      const { image, message, mood, isSpecial } = getRandomGreeting();
+      setCurrentImage(image);
+      setCurrentMessage(message);
+      setMood(mood);
+      setIsSpecial(isSpecial);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (clickCount > 15) {
+      setShowSecret(true);
+      const timer = setTimeout(() => setShowSecret(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [clickCount]);
+
+  const handleHover = () => {
+    const { image, message, mood, isSpecial } = getRandomGreeting();
+    setCurrentImage(image);
+    setCurrentMessage(message);
+    setMood(mood);
+    setIsSpecial(isSpecial);
+  };
+
   const handleClick = () => {
-    const newCount = clickCount + 1;
-    setClickCount(newCount);
-    setIsHappy(true);
-
-    if (newCount > 10) {
-      setCurrentFrog(6); // Angry frog
-    } else if (newCount > 5) {
-      setCurrentFrog(4); // Special frog
-    } else {
-      setCurrentFrog(7); // Happy frog
-    }
-
-    setTimeout(() => {
-      setIsHappy(false);
-      if (newCount <= 10) {
-        setCurrentFrog(isVisible ? 1 : 0); // back to smile or default
-      }
-    }, 1000);
+    setClickCount(prev => prev + 1);
+    handleHover();
   };
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setPosition({ x, y });
-
-    if (clickCount <= 10) {
-      if (x > rect.width * 0.6) {
-        setCurrentFrog(3);
-      } else if (x < rect.width * 0.4) {
-        setCurrentFrog(isVisible ? 1 : 0);
-      } else {
-        setCurrentFrog(2);
-      }
-    }
-  };
-
-  const getCurrentFrogImage = () => {
-    return frogImages[currentFrog] || frogImages[0];
-  };
+  const bubbleClasses = `speech-bubble-3d ${mood} ${isSpecial ? 'special' : ''}`;
 
   return (
-    <div
-      className="frog-activator"
-
-      onMouseEnter={() => {
-        setIsVisible(true);
-
-        // 🐸 Show a random frog image (avoid angry/happy ones if not clicked much)
-        if (clickCount <= 10) {
-          const randomFrogIndex = Math.floor(Math.random() * 5); // 0 to 4 are safe
-          setCurrentFrog(randomFrogIndex);
-        }
-
-        // 💬 Show a random message
-        const newMessage = messages[Math.floor(Math.random() * messages.length)];
-        setCurrentMessage(newMessage);
-      }}
-
-      onMouseLeave={() => {
-        setIsVisible(false);
-        if (clickCount <= 10) setCurrentFrog(0);
-      }}
-    >
-      <div
-        className={`frog-wrapper ${isVisible ? "visible" : ""}`}
-        onMouseMove={handleMouseMove}
-        onClick={handleClick}
-      >
-        <div
-          className={`frog-container ${isHappy ? "happy" : ""} ${clickCount > 5 ? "special" : ""
-            }`}
-          style={{
-            transform: `translate(${position.x / 20}px, ${position.y / 20}px)`,
-          }}
+    <div className="greeting-activator">
+      <div className="greeting-wrapper">
+        <div 
+          className={`greeting-container ${mood} ${isSpecial ? 'special' : ''}`}
+          onMouseEnter={handleHover}
+          onClick={handleClick}
         >
-          <img
-            src={getCurrentFrogImage()}
-            alt="Friendly Frog"
-            className={`frog-image ${clickCount > 5 ? "spin" : ""}`}
-          />
+          {currentImage && (
+            <img
+              src={currentImage}
+              alt="Greeting"
+              className={`greeting-image ${clickCount > 10 ? 'spin' : ''}`}
+            />
+          )}
+          
+          {/* 3D Speech Bubble */}
           {isVisible && (
-            <div className="speech-bubble">
-              {clickCount > 10 ? "STOP CLICKING ME!" : currentMessage}
-              {clickCount > 0 && !isHappy && (
-                <div className="click-counter">Clicks: {clickCount}</div>
+            <div className={bubbleClasses}>
+              <div className="bubble-content-3d">
+                {currentMessage || `Hello, ${user}!`}
+                {isSpecial && <span className="fireworks-3d">🎉</span>}
+              </div>
+              {clickCount > 0 && (
+                <div className="counter-container-3d">
+                  <span className="click-counter-3d">
+                    Clicks: {clickCount}
+                  </span>
+                </div>
               )}
             </div>
           )}
+          
+          {/* Secret message appears after many clicks */}
+          {showSecret && (
+            <div className="secret-message">
+              Wow! You really like clicking! 🎊
+              <div className="fireworks">✨🎆✨</div>
+            </div>
+          )}
         </div>
-        {clickCount > 15 && (
-          <div className="secret-message">
-            Wow, you really like frogs! 🐸
-            <div className="fireworks">🎆</div>
-          </div>
-        )}
       </div>
     </div>
   );
