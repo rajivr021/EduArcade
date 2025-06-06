@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.31.4",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.1",
     "@tippyjs/react": "^4.2.6",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.15.0",
+    "framer-motion": "^12.16.0",
     "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -22,7 +25,8 @@
     "react-router-dom": "^6.30.0",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

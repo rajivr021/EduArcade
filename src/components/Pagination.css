@@ -153,6 +153,11 @@
   position: relative;
   z-index: 2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* Add these lines to center the cap */
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .mushroom-cap::before {
@@ -187,6 +192,11 @@
   position: relative;
   z-index: 1;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  /* Add these lines to center the stem */
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .page-number {

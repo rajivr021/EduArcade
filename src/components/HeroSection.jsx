@@ -1,0 +1,289 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
+import { motion } from "framer-motion";
+import "./HeroSection.css";
+
+const HeroSection = () => {
+  const [typedText, setTypedText] = useState("");
+  const phrases = [
+    "Discover fun learning games!",
+    "Explore nature's secrets!",
+    "Become a science explorer!",
+    "Earn cool badges!",
+    "Play with friends!"
+  ];
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed] = useState(100);
+
+  // Floating animation for decorative elements
+  const floatingVariants = {
+    float: {
+      y: ["0%", "10%", "0%"],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  // Typing animation effect
+  useEffect(() => {
+    const currentPhrase = phrases[currentPhraseIndex];
+
+    const handleTyping = () => {
+      setTypedText((prevText) => {
+        if (isDeleting) {
+          return currentPhrase.substring(0, prevText.length - 1);
+        } else {
+          return currentPhrase.substring(0, prevText.length + 1);
+        }
+      });
+
+      if (!isDeleting && typedText === currentPhrase) {
+        setTimeout(() => setIsDeleting(true), 1500); // Pause before deleting
+      } else if (isDeleting && typedText === "") {
+        setIsDeleting(false);
+        setCurrentPhraseIndex((prev) =>
+          prev === phrases.length - 1 ? 0 : prev + 1
+        );
+      }
+    };
+
+    const timer = setTimeout(handleTyping, isDeleting ? typingSpeed / 2 : typingSpeed);
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, currentPhraseIndex]);
+
+  return (
+    <section className="hero-section">
+      {/* Decorative floating elements */}
+      <motion.div 
+        className="floating-element leaf-1"
+        variants={floatingVariants}
+        animate="float"
+      >
+       <div className="Heroleaf">🥀</div>
+      </motion.div>
+      
+      <motion.div 
+        className="floating-element cloud-1"
+        variants={floatingVariants}
+        animate="float"
+        style={{ transitionDelay: "0.5s" }}
+      >
+        <div className="Heroleaf">🌼</div>
+      </motion.div>
+      
+      <motion.div 
+        className="floating-element star-1"
+        variants={floatingVariants}
+        animate="float"
+        style={{ transitionDelay: "1s" }}
+      >
+       {/* <div className="Heroleaf">🌿</div> */}
+      </motion.div>
+
+      <div className="hero-content">
+        <div className="hero-text">
+          <motion.h1 
+            className="hero-title"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Adventure Awaits in <span className="highlight">Nature's Classroom! </span>
+            
+          </motion.h1>
+
+          <motion.div 
+            className="subtitle-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <p className="subtitle">
+              {typedText}
+              <span className="cursor">|</span>
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div 
+          className="cta-buttons"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <Link to="/games" className="cta-button primary">
+            <motion.span whileHover={{ scale: 1.05 }}>Start Playing</motion.span>
+            <motion.svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none"
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </motion.svg>
+          </Link>
+
+          <Link to="/leaderboard" className="cta-button secondary">
+            <motion.span whileHover={{ scale: 1.05 }}>See Top Explorers</motion.span>
+            <motion.svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none"
+              whileHover={{ rotate: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <path d="M16 15V17M12 11V17M8 7V17M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </motion.svg>
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Animated character */}
+      <motion.div 
+        className="hero-character"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+      >
+        <div className="Heroleaf">🌿</div>
+      </motion.div>
+
+      {/* Interactive scroll indicator */}
+     <Box
+  sx={{
+    position: 'absolute',
+    bottom: '40px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+     zIndex: 10 
+  }}
+>
+  <motion.div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      cursor: 'pointer',
+      gap: '8px',
+     
+    }}
+    onClick={() => window.scrollBy({ top: window.innerHeight - 100, behavior: 'smooth' })}
+    animate={{
+      y: [0, 10, 0]
+    }}
+    transition={{
+      duration: 2.5,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }}
+  >
+    {/* Animated leaves scroll indicator */}
+    <motion.div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '4px'
+      }}
+    >
+      <motion.div
+        style={{ fontSize: '1.8rem' }}
+        animate={{
+          y: [0, -5, 0],
+          rotate: [-15, 15, -15]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.2
+        }}
+      >
+        🍃
+      </motion.div>
+      <motion.div
+        style={{ fontSize: '2rem' }}
+        animate={{
+          y: [0, -8, 0],
+          rotate: [10, -10, 10]
+        }}
+        transition={{
+          duration: 2.2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        🍂
+      </motion.div>
+      <motion.div
+        style={{ fontSize: '1.6rem' }}
+        animate={{
+          y: [0, -5, 0],
+          rotate: [-10, 10, -10]
+        }}
+        transition={{
+          duration: 2.3,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.1
+        }}
+      >
+        🌿
+      </motion.div>
+    </motion.div>
+
+    {/* Text with pulse animation */}
+    <motion.div
+      style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        padding: '8px 16px',
+        borderRadius: '20px',
+        boxShadow: '0 4px 12px rgba(46, 125, 50, 0.2)'
+      }}
+      animate={{
+        scale: [1, 1.05, 1]
+      }}
+      transition={{
+        duration: 2,
+        repeat: Infinity
+      }}
+    >
+      <motion.p
+        style={{
+          color: '#2e7d32',
+          fontWeight: '700',
+          fontSize: '14px',
+          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
+        }}
+      >
+        <span>Explore Below</span>
+        <motion.span
+          animate={{ rotate: 90 }}
+          transition={{
+            duration: 0.5
+          }}
+        >
+          →
+        </motion.span>
+      </motion.p>
+    </motion.div>
+  </motion.div>
+</Box>
+    </section>
+  );
+};
+
+export default HeroSection;

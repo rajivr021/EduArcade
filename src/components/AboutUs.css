@@ -21,13 +21,13 @@
   box-shadow: 0 4px 20px rgba(46, 125, 50, 0.1);
 }
 
-.hero-title {
+.hero-title__ {
   font-size: 2.8rem;
   color: #2e7d32;
   margin-bottom: 0.5rem;
 }
 
-.hero-title span {
+.hero-title__ span {
   color: #1b5e20;
   font-weight: 700;
 }
@@ -448,7 +448,7 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .hero-title {
+  .hero-title__ {
     font-size: 2rem;
   }
   

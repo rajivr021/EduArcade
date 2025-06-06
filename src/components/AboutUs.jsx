@@ -14,7 +14,7 @@ const AboutUs = () => {
       <div className="detailed-container">
         {/* Hero Section */}
         <div className="about-hero">
-          <h1 className="hero-title">Welcome to <span>Fun Game World</span></h1>
+          <h1 className="hero-title__">Welcome to <span>Fun Game World</span></h1>
           <p className="hero-subtitle">Where Innovation Meets Entertainment</p>
           <div className="hero-stats">
             <div className="stat-item">

@@ -170,7 +170,7 @@ const gamesData = [
     {
         id: 22,
         title: "Minecraft",  // Sandbox
-        banner: "https://scontent.fdel11-4.fna.fbcdn.net/v/t39.30808-1/301630591_757962555498632_3504002148598414005_n.jpg?cstp=mx1024x1024&ctp=s720x720&_nc_cat=102&ccb=1-7&_nc_sid=3ab345&_nc_ohc=jlPV5Orc0ycQ7kNvwF__ctz&_nc_oc=AdmQA0zjXP5_DP82zBIqjXyY2tiUDmu9Ck0YlSpVWBQ08TSOX1EZMWy3bBbjBq2KWRMSeaGd9q_v3DfFbJ6gLmDC&_nc_zt=24&_nc_ht=scontent.fdel11-4.fna&_nc_gid=qpbvG4J0lFkzih30TnOQnQ&oh=00_AfJys7j3rwhAC6e7rd5cGTa_0R2eVHdxW1zWxEZkM5NtNw&oe=6834040F",
+        banner: "/gameImg/MINECRAFTLOGO.jpg",
         rating: 4.9,
         isNew: false,
         isPopular: true

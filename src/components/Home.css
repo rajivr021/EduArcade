@@ -11,11 +11,15 @@
   --transition: all 0.3s ease;
 }
 
+
+.benefits-grid{
+
+  padding: 0 1rem;
+  max-width: 99%;
+}
 /* Base Styles */
 .home-container {
-  max-width: 99%;
   margin: 0 auto;
-  padding: 0 1rem;
   overflow-x: hidden;
   background-color: var(--light);
 }

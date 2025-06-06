@@ -61,7 +61,7 @@ const FeaturedGames = ({ games = [] }) => {
 
   return (
     <section className="feat-games-carousel">
-      <h2 className="feat-games-title">Featured Learning Games</h2>
+      <h2 className="feat-games-title">Trending & Highly Rated Games</h2>
       <div
         className="carousel-wrapper"
         onTouchStart={handleTouchStart}
@@ -86,7 +86,15 @@ const FeaturedGames = ({ games = [] }) => {
               >
                 <div className="game-card">
                   <div className="game-banner-container">
-                    {game.isNew && <img className='NewRibbon' src='/NewRibbon1.gif' alt="New"/>}
+                    {game.isNew && <div class="cloud-badge">
+                      NEW!
+                      <div class="face">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                      </div>
+                      <div class="sunbeam"></div>
+                    </div>}
                     <img
                       src={game.banner}
                       alt={game.title}
