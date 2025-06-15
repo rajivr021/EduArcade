@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./HiGreeting.css";
 
 const HiGreeting = ({ user }) => {
@@ -27,25 +27,28 @@ const HiGreeting = ({ user }) => {
     "./sayHi/new/Parrot Worm.gif",
   ];
 
+  console.log(user.username);
+  
+
   const messages = [
-    `👋 Hi, ${user}! Ready for fun?`,
-    `🌟 You're a superstar, ${user}!`,
-    `🐸 Ribbit! ${user} is hopping by!`,
-    `🌈 Magic alert! ${user} is here!`,
-    `🦸‍♂️ ${user}, the super kid!`,
-    `🎨 Wow, ${user}! Your avatar is awesome!`,
-    `🍪 Do you like cookies, ${user}?`,
+    `👋 Hi, ${user.username}! Ready for fun?`,
+    `🌟 You're a superstar, ${user.username}!`,
+    `🐸 Ribbit! ${user.username} is hopping by!`,
+    `🌈 Magic alert! ${user.username} is here!`,
+    `🦸‍♂️ ${user.username}, the super kid!`,
+    `🎨 Wow, ${user.username}! Your avatar is awesome!`,
+    `🍪 Do you like cookies, ${user.username}?`,
     `🎈 Hover power... BOING!`,
-    `🦄 A unicorn whispered: ${user} is cool!`,
-    `🚀 ${user} is blasting off to fun!`,
+    `🦄 A unicorn whispered: ${user.username} is cool!`,
+    `🚀 ${user.username} is blasting off to fun!`,
   ];
 
   const specialMessages = [
-    `✨ ${user}, you're magical! ✨`,
-    `🎯 BULLSEYE! Perfect click, ${user}!`,
+    `✨ ${user.username}, you're magical! ✨`,
+    `🎯 BULLSEYE! Perfect click, ${user.username}!`,
     `🏆 Champion clicker alert!`,
     `💎 You found a rare greeting!`,
-    `👑 All hail ${user}, the click master!`
+    `👑 All hail ${user.username}, the click master!`
   ];
 
   const getRandomGreeting = () => {
@@ -76,7 +79,7 @@ const HiGreeting = ({ user }) => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (user.username) {
       setIsVisible(true);
       const { image, message, mood, isSpecial } = getRandomGreeting();
       setCurrentImage(image);
@@ -84,7 +87,7 @@ const HiGreeting = ({ user }) => {
       setMood(mood);
       setIsSpecial(isSpecial);
     }
-  }, [user]);
+  }, [user.username]);
 
   useEffect(() => {
     if (clickCount > 15) {
@@ -129,7 +132,7 @@ const HiGreeting = ({ user }) => {
           {isVisible && (
             <div className={bubbleClasses}>
               <div className="bubble-content-3d">
-                {currentMessage || `Hello, ${user}!`}
+                {currentMessage || `Hello, ${user.username}!`}
                 {isSpecial && <span className="fireworks-3d">🎉</span>}
               </div>
               {clickCount > 0 && (

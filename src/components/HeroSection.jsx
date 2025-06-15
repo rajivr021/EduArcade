@@ -58,46 +58,23 @@ const HeroSection = () => {
 
   return (
     <section className="hero-section">
-      {/* Decorative floating elements */}
-      <motion.div 
-        className="floating-element leaf-1"
-        variants={floatingVariants}
-        animate="float"
-      >
-       <div className="Heroleaf">🥀</div>
-      </motion.div>
-      
-      <motion.div 
-        className="floating-element cloud-1"
-        variants={floatingVariants}
-        animate="float"
-        style={{ transitionDelay: "0.5s" }}
-      >
-        <div className="Heroleaf">🌼</div>
-      </motion.div>
-      
-      <motion.div 
-        className="floating-element star-1"
-        variants={floatingVariants}
-        animate="float"
-        style={{ transitionDelay: "1s" }}
-      >
-       {/* <div className="Heroleaf">🌿</div> */}
-      </motion.div>
+
+
+
 
       <div className="hero-content">
         <div className="hero-text">
-          <motion.h1 
+          <motion.h1
             className="hero-title"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             Adventure Awaits in <span className="highlight">Nature's Classroom! </span>
-            
+
           </motion.h1>
 
-          <motion.div 
+          <motion.div
             className="subtitle-container"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -110,7 +87,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="cta-buttons"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -118,10 +95,10 @@ const HeroSection = () => {
         >
           <Link to="/games" className="cta-button primary">
             <motion.span whileHover={{ scale: 1.05 }}>Start Playing</motion.span>
-            <motion.svg 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
+            <motion.svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
               fill="none"
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -132,10 +109,10 @@ const HeroSection = () => {
 
           <Link to="/leaderboard" className="cta-button secondary">
             <motion.span whileHover={{ scale: 1.05 }}>See Top Explorers</motion.span>
-            <motion.svg 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
+            <motion.svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
               fill="none"
               whileHover={{ rotate: 10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -145,16 +122,10 @@ const HeroSection = () => {
           </Link>
         </motion.div>
       </div>
+      <div className="HeroImg"><img src="./HeroNewBg.png" alt="" /></div>
 
-      {/* Animated character */}
-      <motion.div 
-        className="hero-character"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-      >
-        <div className="Heroleaf">🌿</div>
-      </motion.div>
+
+     
 
       {/* Interactive scroll indicator */}
      <Box
@@ -165,7 +136,7 @@ const HeroSection = () => {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-     zIndex: 10 
+    zIndex: 10
   }}
 >
   <motion.div
@@ -175,7 +146,6 @@ const HeroSection = () => {
       alignItems: 'center',
       cursor: 'pointer',
       gap: '8px',
-     
     }}
     onClick={() => window.scrollBy({ top: window.innerHeight - 100, behavior: 'smooth' })}
     animate={{
@@ -187,7 +157,7 @@ const HeroSection = () => {
       ease: "easeInOut"
     }}
   >
-    {/* Animated leaves scroll indicator */}
+    {/* Game controller scroll indicator */}
     <motion.div
       style={{
         display: 'flex',
@@ -196,62 +166,89 @@ const HeroSection = () => {
         gap: '4px'
       }}
     >
+      {/* D-pad animation */}
       <motion.div
-        style={{ fontSize: '1.8rem' }}
+        style={{ 
+          position: 'relative',
+          width: '60px',
+          height: '60px',
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backdropFilter: 'blur(4px)'
+        }}
         animate={{
-          y: [0, -5, 0],
-          rotate: [-15, 15, -15]
+          scale: [1, 1.05, 1]
         }}
         transition={{
           duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.2
+          repeat: Infinity
         }}
       >
-        🍃
+        <motion.div
+          style={{
+            position: 'absolute',
+            fontSize: '2rem',
+            color: '#FF6D00'
+          }}
+          animate={{
+            y: [0, -5, 0]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          ↑
+        </motion.div>
+       
       </motion.div>
+
+      {/* XP progress bar */}
       <motion.div
-        style={{ fontSize: '2rem' }}
-        animate={{
-          y: [0, -8, 0],
-          rotate: [10, -10, 10]
-        }}
-        transition={{
-          duration: 2.2,
-          repeat: Infinity,
-          ease: "easeInOut"
+        style={{
+          width: '100px',
+          height: '6px',
+          background: 'rgba(255,255,255,0.2)',
+          borderRadius: '3px',
+          marginTop: '12px',
+          overflow: 'hidden'
         }}
       >
-        🍂
-      </motion.div>
-      <motion.div
-        style={{ fontSize: '1.6rem' }}
-        animate={{
-          y: [0, -5, 0],
-          rotate: [-10, 10, -10]
-        }}
-        transition={{
-          duration: 2.3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.1
-        }}
-      >
-        🌿
+        <motion.div
+          style={{
+            height: '100%',
+            width: '0%',
+            background: 'linear-gradient(90deg, #00C853, #64DD17)',
+            borderRadius: '3px'
+          }}
+          animate={{
+            width: ['0%', '100%', '0%']
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </motion.div>
     </motion.div>
 
-    {/* Text with pulse animation */}
+    {/* Game-style text prompt */}
     <motion.div
       style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        backgroundColor: 'rgba(0,0,0,0.7)',
         padding: '8px 16px',
         borderRadius: '20px',
-        boxShadow: '0 4px 12px rgba(46, 125, 50, 0.2)'
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+        border: '2px solid #FF6D00'
       }}
       animate={{
-        scale: [1, 1.05, 1]
+        scale: [1, 1.05, 1],
+        borderColor: ['#FF6D00', '#FFAB00', '#FF6D00']
       }}
       transition={{
         duration: 2,
@@ -260,23 +257,39 @@ const HeroSection = () => {
     >
       <motion.p
         style={{
-          color: '#2e7d32',
+          color: '#FFFFFF',
           fontWeight: '700',
           fontSize: '14px',
           margin: 0,
           display: 'flex',
           alignItems: 'center',
-          gap: '8px'
+          gap: '8px',
+          textShadow: '0 2px 4px rgba(0,0,0,0.5)'
         }}
       >
-        <span>Explore Below</span>
         <motion.span
-          animate={{ rotate: 90 }}
+          animate={{ 
+            scale: [1, 1.2, 1],
+            color: ['#FFF', '#FFD600', '#FFF']
+          }}
           transition={{
-            duration: 0.5
+            duration: 1.5,
+            repeat: Infinity
           }}
         >
-          →
+          SCROLL!
+        </motion.span>
+        <motion.span
+          animate={{ 
+            x: [0, 5, 0],
+            opacity: [0.7, 1, 0.7]
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity
+          }}
+        >
+          ▼
         </motion.span>
       </motion.p>
     </motion.div>

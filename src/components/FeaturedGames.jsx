@@ -86,14 +86,14 @@ const FeaturedGames = ({ games = [] }) => {
               >
                 <div className="game-card">
                   <div className="game-banner-container">
-                    {game.isNew && <div class="cloud-badge">
+                    {game.isNew && <div className="cloud-badge">
                       NEW!
-                      <div class="face">
-                        <div class="eye left"></div>
-                        <div class="eye right"></div>
-                        <div class="mouth"></div>
+                      <div className="face">
+                        <div className="eye left"></div>
+                        <div className="eye right"></div>
+                        <div className="mouth"></div>
                       </div>
-                      <div class="sunbeam"></div>
+                      <div className="sunbeam"></div>
                     </div>}
                     <img
                       src={game.banner}

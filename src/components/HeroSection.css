@@ -103,8 +103,15 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .cta-buttons {
@@ -184,7 +191,7 @@
   .hero-title {
     font-size: 3rem;
   }
-  
+
   .hero-character {
     height: 70vh;
     right: -50px;
@@ -196,35 +203,35 @@
     text-align: center;
     padding-top: 100px;
   }
-  
+
   .hero-content {
     align-items: center;
   }
-  
+
   .hero-text {
     margin-bottom: 2rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1.5rem;
   }
-  
+
   .hero-character {
     position: relative;
     height: 300px;
     right: auto;
     margin-top: 2rem;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .floating-element {
     display: none;
   }
@@ -234,11 +241,11 @@
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .subtitle {
     font-size: 1.2rem;
   }
-  
+
   .cta-button {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
@@ -250,36 +257,46 @@
 
 
 .Heroleaf {
-  font-size: 3rem; /* Large size for visibility */
+  font-size: 3rem;
+  /* Large size for visibility */
   display: inline-block;
-  text-shadow: 
-    0 2px 5px rgba(46, 125, 50, 0.3), /* Soft green shadow */
-    0 4px 10px rgba(46, 125, 50, 0.2); /* Deeper shadow for depth */
-  animation: 
-    gentleSway 4s ease-in-out infinite alternate, /* Swaying motion */
-    pulseGlow 3s ease-in-out infinite; /* Pulsing effect */
+  text-shadow:
+    0 2px 5px rgba(46, 125, 50, 0.3),
+    /* Soft green shadow */
+    0 4px 10px rgba(46, 125, 50, 0.2);
+  /* Deeper shadow for depth */
+  animation:
+    gentleSway 4s ease-in-out infinite alternate,
+    /* Swaying motion */
+    pulseGlow 3s ease-in-out infinite;
+  /* Pulsing effect */
   transform-origin: bottom center;
-  filter: drop-shadow(0 0 8px rgba(104, 159, 56, 0.4)); /* Glow effect */
-  will-change: transform, filter; /* Optimize animations */
+  filter: drop-shadow(0 0 8px rgba(104, 159, 56, 0.4));
+  /* Glow effect */
+  will-change: transform, filter;
+  /* Optimize animations */
 }
 
 /* Different leaf styles for variety */
 .floating-element.leaf-1 .Heroleaf {
   font-size: 3.5rem;
-  color: #2e7d32; /* Dark green */
+  color: #2e7d32;
+  /* Dark green */
   animation-delay: 0s;
 }
 
 .floating-element.cloud-1 .Heroleaf {
   font-size: 2.8rem;
-  color: #388e3c; /* Medium green */
+  color: #388e3c;
+  /* Medium green */
   animation-delay: 0.3s;
   transform: rotate(30deg);
 }
 
 .floating-element.star-1 .Heroleaf {
   font-size: 3.2rem;
-  color: #689f38; /* Light green */
+  color: #689f38;
+  /* Light green */
   animation-delay: 0.6s;
   transform: rotate(-15deg);
 }
@@ -295,16 +312,20 @@
   0% {
     transform: rotate(-5deg);
   }
+
   100% {
     transform: rotate(5deg);
   }
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.9;
     filter: drop-shadow(0 0 8px rgba(104, 159, 56, 0.4));
   }
+
   50% {
     opacity: 1;
     filter: drop-shadow(0 0 12px rgba(104, 159, 56, 0.7));
@@ -319,9 +340,10 @@
   .hero-section {
     text-align: center;
     padding-top: 80px;
-    padding-bottom: 120px; /* Add space for scroll indicator */
+    padding-bottom: 120px;
+    /* Add space for scroll indicator */
     min-height: auto;
-    height: auto;
+    height: 100vh;
   }
 
   .hero-content {
@@ -446,4 +468,174 @@
   left: 0;
   right: 0;
   z-index: 10;
+}
+
+.HeroImg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 100%;
+  filter: brightness(1.05);
+  animation: fireflyTwinkle 4s infinite;
+  animation: jugnuPulse 3s infinite alternate;
+}
+
+.HeroImg img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  transition: all 0.4s ease;
+  filter: brightness(1);
+  position: relative;
+  z-index: 1;
+  
+
+}
+
+/* Jugnu Glow Effect */
+.HeroImg::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 320px;
+  /* Slightly larger than image */
+  background: radial-gradient(circle at center,
+      rgba(173, 216, 230, 0.8) 0%,
+      rgba(173, 216, 230, 0.4) 50%,
+      transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Firefly particles */
+.HeroImg::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 150, 0.8) 0%, transparent 3%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 150, 0.8) 0%, transparent 3%),
+    radial-gradient(circle at 50% 70%, rgba(255, 255, 150, 0.8) 0%, transparent 3%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 0;
+}
+
+.HeroImg:hover img {
+  filter: brightness(1.05);
+  transform: scale(1.02);
+}
+
+.HeroImg:hover::before {
+  opacity: 1;
+  transform: scale(1.1);
+  animation: jugnuPulse 3s infinite alternate;
+}
+
+.HeroImg:hover::after {
+  opacity: 0.6;
+  animation: fireflyTwinkle 4s infinite;
+}
+
+@keyframes jugnuPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+@keyframes fireflyTwinkle {
+  0% {
+    opacity: 0.4;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  40% {
+    opacity: 0.5;
+  }
+
+  60% {
+    opacity: 0.9;
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .HeroImg img {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .HeroImg img {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .HeroImg img {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .HeroImg img {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .HeroImg img {
+    max-width: 150px;
+  }
+}
+
+/* Optional: Add these for very large screens */
+@media (min-width: 1600px) {
+  .HeroImg img {
+    max-width: 350px;
+  }
+}
+
+/* For landscape tablets and small laptops */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .HeroImg img {
+    max-width: 240px;
+  }
+}
+
+/* For portrait tablets */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .HeroImg img {
+    max-width: 280px;
+  }
 }

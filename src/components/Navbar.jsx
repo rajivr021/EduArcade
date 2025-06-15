@@ -160,7 +160,7 @@ const Navbar = () => {
                                         left: '-200px'
                                     }}
                                 >
-                                    <HiGreeting user={user.firstName} />
+                                    <HiGreeting user={user}  />
                                 </div>
                             )}
                         </div>
